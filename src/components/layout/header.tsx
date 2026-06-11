@@ -87,37 +87,29 @@ function MegaMenu({
           : "pointer-events-none -translate-y-2 opacity-0",
       )}
     >
-      <div className="mx-auto grid w-full max-w-6xl gap-8 px-6 py-10 sm:px-8 lg:grid-cols-4 lg:px-12">
+      <div className="mx-auto grid w-full max-w-6xl gap-5 px-6 py-10 sm:px-8 lg:grid-cols-4 lg:px-12">
         {groups.map((group) => (
-          <div key={group.href} className="flex flex-col gap-4">
-            <Link
-              href={group.href}
-              className="group/col flex flex-col gap-1.5 border-l-2 border-accent-100 pl-4 transition-colors hover:border-accent-600"
-            >
-              <span className="font-heading text-sm font-semibold leading-snug text-ink transition-colors group-hover/col:text-accent-700">
-                {group.label}
-              </span>
-              <span className="font-body text-xs leading-relaxed text-muted">
-                {group.description}
-              </span>
-            </Link>
-            <ul className="flex flex-col gap-1 pl-4">
-              {group.items.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "group/link inline-flex items-center gap-2 py-1 font-body text-[0.82rem] text-muted transition-colors hover:text-accent-700",
-                      isActive(pathname, item.href) && "text-accent-700",
-                    )}
-                  >
-                    <span className="h-px w-0 bg-accent-600 transition-all duration-300 group-hover/link:w-4" />
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Link
+            key={group.href}
+            href={group.href}
+            className={cn(
+              "group/card flex flex-col gap-2 rounded-card border border-border bg-background p-6 transition-[border-color,box-shadow] duration-300 hover:border-accent-200 hover:shadow-card",
+              isActive(pathname, group.href) && "border-accent-200",
+            )}
+          >
+            <span className="font-heading text-sm font-semibold leading-snug text-ink transition-colors duration-200 group-hover/card:text-accent-700">
+              {group.label}
+            </span>
+            <span className="font-body text-xs leading-relaxed text-muted">
+              {group.description}
+            </span>
+            <span className="mt-auto inline-flex items-center gap-1.5 pt-2 font-body text-xs font-medium text-accent-600">
+              Pogledajte
+              <svg viewBox="0 0 16 16" aria-hidden className="h-3 w-3 transition-transform duration-300 group-hover/card:translate-x-0.5">
+                <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </Link>
         ))}
 
         <div className="flex flex-col justify-between gap-6 rounded-card bg-accent-600 p-6 text-white">
@@ -177,30 +169,22 @@ function MobileGroup({
         )}
       >
         <div className="overflow-hidden">
-          <div className="flex flex-col gap-4 pl-1">
+          <div className="flex flex-col gap-3 pl-1">
             {item.groups.map((group) => (
-              <div key={group.href} className="flex flex-col gap-1.5">
-                <Link
-                  href={group.href}
-                  onClick={onNavigate}
-                  className="font-body text-sm font-semibold uppercase tracking-wider text-accent-700"
-                >
-                  {group.label}
-                </Link>
-                {group.items.map((sub) => (
-                  <Link
-                    key={sub.href}
-                    href={sub.href}
-                    onClick={onNavigate}
-                    className={cn(
-                      "py-1 font-body text-base text-muted transition-colors hover:text-accent-700",
-                      isActive(pathname, sub.href) && "text-accent-700",
-                    )}
-                  >
-                    {sub.label}
-                  </Link>
-                ))}
-              </div>
+              <Link
+                key={group.href}
+                href={group.href}
+                onClick={onNavigate}
+                className={cn(
+                  "flex flex-col gap-1 rounded-card border border-border p-4 transition-colors duration-200",
+                  isActive(pathname, group.href) ? "border-accent-200" : "hover:border-accent-200",
+                )}
+              >
+                <span className="font-body text-sm font-semibold text-ink">{group.label}</span>
+                <span className="font-body text-xs leading-relaxed text-muted">
+                  {group.description}
+                </span>
+              </Link>
             ))}
           </div>
         </div>
