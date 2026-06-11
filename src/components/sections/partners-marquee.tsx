@@ -10,7 +10,7 @@ export type PartnerLogo = {
   height: number;
 };
 
-const defaultLogos: PartnerLogo[] = [
+export const partnerLogos: PartnerLogo[] = [
   { src: "/imgs/partners-logos/partner1.webp", alt: "Logo partnera", width: 272, height: 374 },
   { src: "/imgs/partners-logos/partner2.webp", alt: "Logo partnera", width: 434, height: 144 },
   { src: "/imgs/partners-logos/partner3.webp", alt: "Logo partnera", width: 378, height: 392 },
@@ -57,7 +57,7 @@ export function PartnersMarquee({
   id = "partneri",
   eyebrow = "Partneri",
   title = "Brendovi i proizvođači sa kojima sarađujemo",
-  logos = defaultLogos,
+  logos = partnerLogos,
 }: PartnersMarqueeProps) {
   return (
     <section id={id} aria-label={title} className="w-full bg-background py-16 sm:py-20">

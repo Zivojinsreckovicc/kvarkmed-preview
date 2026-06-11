@@ -70,6 +70,8 @@
   --animate-marquee: kvark-marquee 45s linear infinite;
   --animate-float: kvark-float 9s ease-in-out infinite;
   --animate-shimmer: kvark-shimmer 2.2s linear infinite;
+  --animate-loader-bob: kvark-loader-bob 1s ease-in-out infinite;
+  --animate-loader-ring: kvark-loader-ring 1.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -106,6 +108,29 @@
 @keyframes kvark-shimmer {
   to {
     background-position: 200% 0;
+  }
+}
+
+/* Bouncing dots used on the full-screen loading state. */
+@keyframes kvark-loader-bob {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-14px) scale(1.15);
+  }
+}
+
+/* Expanding "echo" rings behind the loading dots. */
+@keyframes kvark-loader-ring {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
   }
 }
 
