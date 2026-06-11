@@ -1,26 +1,217 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   Kvark Med — Design System Tokens
+   Tailwind v4 theme. Every token below generates utilities, e.g.
+   `--color-accent` -> bg-accent / text-accent / border-accent,
+   `--font-heading` -> font-heading, `--radius-card` -> rounded-card.
+   ========================================================================== */
+@theme {
+  /* ---- Brand / accent (rgb 51 22 132) ---- */
+  --color-accent-50: #f5f2fd;
+  --color-accent-100: #e4dcf9;
+  --color-accent-200: #c5b5f3;
+  --color-accent-300: #997ce9;
+  --color-accent-400: #663ade;
+  --color-accent-500: #441daf;
+  --color-accent-600: #331684;
+  --color-accent-700: #291169;
+  --color-accent-800: #200e53;
+  --color-accent-900: #1a0b42;
+  --color-accent: #331684;
+
+  /* ---- Neutrals (warm charcoal to keep it premium, not cold blue) ---- */
+  --color-background: #ffffff;
+  --color-surface: #f7f8f8;
+  --color-surface-strong: #eef1f1;
+  --color-ink: #1a1d1f;
+  --color-ink-soft: #3c4346;
+  --color-muted: #5f6b6d;
+  --color-faint: #8a9396;
+  --color-border: #e7eaeb;
+  --color-border-strong: #d6dadb;
+
+  /* ---- Typography ---- */
+  --font-heading: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid display sizes used for hero / section headings */
+  --text-display: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-h1: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.015em;
+
+  --text-h2: clamp(1.6rem, 1.25rem + 1.4vw, 2.25rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.01em;
+
+  --text-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.005em;
+
+  /* ---- Radii ---- */
+  --radius-card: 1rem;
+  --radius-button: 0.625rem;
+
+  /* ---- Shadows (soft & premium, never heavy) ---- */
+  --shadow-card: 0 1px 2px rgba(26, 29, 31, 0.04), 0 8px 24px -12px rgba(26, 29, 31, 0.12);
+  --shadow-card-hover: 0 2px 4px rgba(26, 29, 31, 0.05), 0 18px 40px -16px rgba(26, 29, 31, 0.18);
+  --shadow-focus: 0 0 0 3px rgba(51, 22, 132, 0.25);
+
+  /* ---- Section rhythm ---- */
+  --spacing-section: 6rem;
+  --spacing-section-sm: 4rem;
+
+  /* ---- Animations ---- */
+  --animate-fade-in: kvark-fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-marquee: kvark-marquee 45s linear infinite;
+  --animate-float: kvark-float 9s ease-in-out infinite;
+  --animate-shimmer: kvark-shimmer 2.2s linear infinite;
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes kvark-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes kvark-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Slow drifting glow used behind hero / CTA decoration. */
+@keyframes kvark-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.05);
+  }
+}
+
+/* Sweep used on skeletons / placeholder media. */
+@keyframes kvark-shimmer {
+  to {
+    background-position: 200% 0;
+  }
+}
+
+/* ==========================================================================
+   Base layer
+   ========================================================================== */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    background-color: var(--color-background);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Accessible, on-brand focus ring */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-600);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-600);
+    color: #ffffff;
+  }
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+@layer utilities {
+  /* Scroll-reveal: hidden until JS adds `data-revealed`. The IntersectionObserver
+     lives in the <Reveal> component; this keeps the animation declarative. */
+  .kvark-reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.7s var(--ease-premium),
+      transform 0.7s var(--ease-premium);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .kvark-reveal[data-revealed="true"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Subtle dotted grid, tinted with the brand accent — adds depth to dark/teal
+     decorative panels without looking like a cheap template. */
+  .kvark-grid {
+    background-image: radial-gradient(currentColor 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .kvark-shimmer-bg {
+    background: linear-gradient(
+      100deg,
+      var(--color-surface-strong) 30%,
+      var(--color-surface) 50%,
+      var(--color-surface-strong) 70%
+    );
+    background-size: 200% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Never leave reveal content stuck invisible for reduced-motion users. */
+  .kvark-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
