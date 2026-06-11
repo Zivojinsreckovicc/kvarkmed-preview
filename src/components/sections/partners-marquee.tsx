@@ -18,11 +18,8 @@ export const partnerLogos: PartnerLogo[] = [
   { src: "/imgs/partners-logos/partner5.webp", alt: "Logo partnera", width: 486, height: 190 },
   { src: "/imgs/partners-logos/partner6.webp", alt: "Logo partnera", width: 418, height: 176 },
   { src: "/imgs/partners-logos/partner7.webp", alt: "Logo partnera", width: 546, height: 172 },
-  { src: "/imgs/partners-logos/partner8.webp", alt: "Logo partnera", width: 466, height: 192 },
-  { src: "/imgs/partners-logos/partner9.webp", alt: "Logo partnera", width: 530, height: 156 },
   { src: "/imgs/partners-logos/partner10.webp", alt: "Logo partnera", width: 488, height: 104 },
   { src: "/imgs/partners-logos/partner11.webp", alt: "Logo partnera", width: 472, height: 156 },
-  { src: "/imgs/partners-logos/partner12.webp", alt: "Logo partnera", width: 400, height: 74 },
 ];
 
 type PartnersMarqueeProps = {
