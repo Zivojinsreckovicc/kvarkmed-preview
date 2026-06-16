@@ -60,7 +60,10 @@ export function AnalyzerCard({ analyzer }: { analyzer: Analyzer }) {
             fill
             loading="lazy"
             sizes="(max-width: 768px) 100vw, (max-width: 1152px) 50vw, 384px"
-            className="object-cover transition-transform duration-500 ease-premium group-hover:scale-105"
+            className={cn(
+              "object-cover transition-transform duration-500 ease-premium group-hover:scale-105",
+              analyzer.imageClassName,
+            )}
           />
         ) : (
           <AnalyzerPlaceholder />
@@ -88,6 +91,7 @@ export function AnalyzerCard({ analyzer }: { analyzer: Analyzer }) {
             size="sm"
             target="_blank"
             rel="noopener noreferrer"
+            download
           >
             PDF katalog
           </Button>

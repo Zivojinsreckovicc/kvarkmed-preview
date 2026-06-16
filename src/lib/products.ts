@@ -449,6 +449,8 @@ export type Analyzer = {
   description: string;
   /** Optional product image; falls back to a branded placeholder when absent. */
   image?: string;
+  /** Optional Tailwind classes to fine-tune image fit/scale within the card frame. */
+  imageClassName?: string;
   /** External links — placeholders ("#") until the client provides them. */
   catalogHref?: string;
   manufacturerHref?: string;
@@ -462,7 +464,8 @@ export const analyzers: Analyzer[] = [
     description:
       "A1cChek Pro Glycohemoglobin Analyzer je napredni HbA1c analizator dizajniran za brzo, precizno i pouzdano praćenje glikoregulacije kod pacijenata sa dijabetesom. Zahvaljujući savremenoj tehnologiji boronatne afinitetne hromatografije, omogućava tačne rezultate za svega nekoliko minuta uz minimalnu količinu uzorka. Kompaktan dizajn, intuitivan ekran osetljiv na dodir i široke mogućnosti povezivanja čine ga idealnim rešenjem za laboratorije, privatne klinike i point-of-care centre. Omogućeno je puštanje četiri uzorka u isto vreme.",
     image: "/imgs/analizatori/biohermes-a1ccheck-heomglobyn-analyzer.webp",
-    catalogHref: "#",
+    imageClassName: "object-contain p-6",
+    catalogHref: "/analizatori-pdfs/biohermes-a1cchek-pro-glikohemoglobin-analizator-katalog.pdf",
     manufacturerHref: "#",
     specs: [
       { key: "Parametar", value: "HbA1c" },
@@ -481,7 +484,7 @@ export const analyzers: Analyzer[] = [
     description:
       "ALLTEST AFR-600 je savremeni POCT imunofluorescentni analizator namenjen brzoj i pouzdanoj dijagnostici širokog spektra biomarkera. Kombinujući visoku preciznost, jednostavno rukovanje i izuzetno kratko vreme očitavanja, omogućava efikasan rad u laboratorijama, ambulantama, urgentnim centrima i drugim zdravstvenim ustanovama. Ugrađeni termalni štampač, ekran osetljiv na dodir i velika memorija dodatno doprinose produktivnosti i pouzdanosti rada.",
     image: "/imgs/analizatori/afr-600-novatrend-plus.webp",
-    catalogHref: "#",
+    catalogHref: "/analizatori-pdfs/alltest-afr-600-imunofluorescentni-analizator-katalog.pdf",
     manufacturerHref: "#",
     specs: [
       { key: "Tip analizatora", value: "Fluorescent Immunoassay" },
@@ -499,7 +502,7 @@ export const analyzers: Analyzer[] = [
     description:
       "ALLTEST AFR-700 je visokoperformansni imunofluorescentni analizator dizajniran za laboratorije sa većim obimom rada i potrebom za maksimalnom efikasnošću. Sa 12 nezavisnih kanala omogućeno je puštanje 12 različitih testova u isto vreme uz izuzetnu preciznost i stabilnost sistema. Savremeni softver, brzo očitavanje i kompatibilnost sa LIS sistemima čine ga idealnim rešenjem za moderne dijagnostičke centre.",
     image: "/imgs/analizatori/aft-700-debunk-plus.webp",
-    catalogHref: "#",
+    catalogHref: "/analizatori-pdfs/alltest-afr-700-imunofluorescentni-analizator-katalog.pdf",
     manufacturerHref: "#",
     specs: [
       { key: "Tip analizatora", value: "Fluorescence Immunoassay" },
@@ -517,7 +520,7 @@ export const analyzers: Analyzer[] = [
     description:
       "Eaglenos Elektrolit Analyzer pruža brzo, precizno i stabilno određivanje ključnih elektrolita u svakodnevnom laboratorijskom radu. Baziran na savremenoj ISE tehnologiji, omogućava pouzdanu analizu uz jednostavno rukovanje i automatsku kalibraciju. Dizajniran je za bolnice, laboratorije i urgentne centre kojima su brzina i tačnost rezultata od ključnog značaja.",
     image: "/imgs/analizatori/eaglenos-electrolyte-analizer.webp",
-    catalogHref: "#",
+    catalogHref: "/analizatori-pdfs/eaglenos-elektrolit-analizator-katalog.pdf",
     manufacturerHref: "#",
     specs: [
       { key: "Parametri", value: "Na+, K+, Cl−, Ca++, Mg++" },
