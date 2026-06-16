@@ -20,6 +20,20 @@ const crumbs = [
   { label: "Farmaceutski i medicinski proizvodi" },
 ];
 
+function ExternalArrow() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-3.5 w-3.5 shrink-0">
+      <path
+        d="M7 17 17 7M9 7h8v8"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 /** One distinct line icon per category, kept minimal and on-brand. */
 const categoryIcons: Record<string, React.ReactNode> = {
   suplementi: (
@@ -86,14 +100,61 @@ export default function FarmaceutskiMedicinskiPage() {
                   <p className="text-sm leading-relaxed text-muted">{category.description}</p>
                 </div>
 
-                <ul className="mt-1 flex flex-col gap-2.5 border-t border-border pt-5">
-                  {category.items.map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 font-body text-sm text-ink-soft">
-                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-300 transition-colors group-hover:bg-accent-600" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                {category.upcoming ? (
+                  <div className="mt-1 border-t border-border pt-5">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-accent-50 px-3 py-1.5 font-body text-xs font-semibold uppercase tracking-[0.14em] text-accent-700">
+                      <span className="h-1.5 w-1.5 rounded-full bg-accent-500" />
+                      Uskoro
+                    </span>
+                  </div>
+                ) : category.items.length ? (
+                  <ul className="mt-1 flex flex-col gap-2.5 border-t border-border pt-5">
+                    {category.items.map((item) => (
+                      <li key={item} className="flex items-center gap-2.5 font-body text-sm text-ink-soft">
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-300 transition-colors group-hover:bg-accent-600" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+
+                {category.products?.length ? (
+                  <div className="flex flex-col gap-3 border-t border-border pt-5">
+                    {category.products.map((product) =>
+                      product.href ? (
+                        <a
+                          key={product.name}
+                          href={product.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex flex-col gap-1.5 rounded-card bg-accent-50/60 p-4 transition-colors duration-300 hover:bg-accent-50"
+                        >
+                          <span className="flex items-start justify-between gap-2 font-heading text-sm font-semibold leading-snug text-ink">
+                            {product.name}
+                            <span className="mt-0.5 text-accent-600">
+                              <ExternalArrow />
+                            </span>
+                          </span>
+                          <span className="text-sm leading-relaxed text-muted">
+                            {product.description}
+                          </span>
+                        </a>
+                      ) : (
+                        <div
+                          key={product.name}
+                          className="flex flex-col gap-1.5 rounded-card bg-accent-50/60 p-4"
+                        >
+                          <span className="font-heading text-sm font-semibold leading-snug text-ink">
+                            {product.name}
+                          </span>
+                          <span className="text-sm leading-relaxed text-muted">
+                            {product.description}
+                          </span>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                ) : null}
               </article>
             </Reveal>
           ))}

@@ -34,11 +34,20 @@ export const productGroups: ProductGroup[] = [
   },
 ];
 
+export const serviceGroups: ProductGroup[] = [
+  {
+    label: "Usluge registracije",
+    href: "/usluge/registracije",
+    description:
+      "Registracija medicinskih sredstava i dijetetskih proizvoda, izmene, obnove i zvanični prevodi dokumentacije.",
+  },
+];
+
 export const navItems: NavItem[] = [
   { label: "Početna", href: "/" },
   { label: "O nama", href: "/o-nama" },
   { label: "Proizvodi", href: "/proizvodi", groups: productGroups },
-  { label: "Usluge", href: "/usluge" },
+  { label: "Usluge", href: "/usluge/registracije", groups: serviceGroups },
   { label: "Partneri", href: "/partneri" },
   { label: "Blog", href: "/blog" },
   { label: "Kontakt", href: "/kontakt" },

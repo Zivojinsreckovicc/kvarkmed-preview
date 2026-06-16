@@ -14,6 +14,8 @@
 export type ProductCard = {
   name: string;
   description: string;
+  /** Optional external link to the manufacturer's product page. */
+  href?: string;
 };
 
 /** A named list of product names without descriptions (compact list cards). */
@@ -316,14 +318,17 @@ export const poctGroups: PoctGroup[] = [
       {
         name: "Troponin I / Myoglobin / CK-MB / 3 u 1",
         description: "Brza procena akutnog infarkta miokarda i oštećenja srčanog mišića.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/521",
       },
       {
         name: "cTnI / Cardiac Troponin I",
         description: "Visoko specifičan marker za dijagnostiku infarkta miokarda.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/211",
       },
       {
         name: "NT-proBNP",
         description: "Marker srčane insuficijencije i procene opterećenja srca.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/213",
       },
     ],
   },
@@ -333,10 +338,12 @@ export const poctGroups: PoctGroup[] = [
       {
         name: "CRP / C-reaktivni protein",
         description: "Kvantitativno određivanje upalnih procesa i bakterijskih infekcija.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/205",
       },
       {
         name: "ASO / Antistreptolizin O",
         description: "Detekcija prethodne ili aktuelne streptokokne infekcije.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/1487",
       },
     ],
   },
@@ -347,6 +354,7 @@ export const poctGroups: PoctGroup[] = [
         name: "Rheumatoid Factor IgM / RF IgM",
         description:
           "Pomoć u dijagnostici reumatoidnog artritisa i drugih autoimunih oboljenja.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/1210",
       },
     ],
   },
@@ -356,14 +364,17 @@ export const poctGroups: PoctGroup[] = [
       {
         name: "Calprotectin",
         description: "Marker inflamatornih bolesti creva / IBD.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/612",
       },
       {
         name: "H. pylori Antigen",
         description: "Detekcija infekcije bakterijom Helicobacter pylori iz uzorka stolice.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/607",
       },
       {
         name: "FOB / Fecal Occult Blood",
         description: "Otkrivanje okultnog / skrivenog krvarenja u gastrointestinalnom traktu.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/210",
       },
     ],
   },
@@ -373,10 +384,35 @@ export const poctGroups: PoctGroup[] = [
       {
         name: "Ferritin",
         description: "Procena zaliha gvožđa i dijagnostika anemija.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/1461",
       },
       {
         name: "Vitamin D",
         description: "Kvantitativno određivanje nivoa vitamina D u organizmu.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/1266",
+      },
+      {
+        name: "Vitamin B12 / VB12",
+        description:
+          "Kvantitativno određivanje nivoa vitamina B12, značajnog za hematološke i neurološke funkcije.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/1509",
+      },
+      {
+        name: "HbA1c / Glikozilirani hemoglobin (BioHermes A1cCheck Pro)",
+        description:
+          "Kvantitativno određivanje HbA1c za procenu dugoročne kontrole glikemije i praćenje dijabetesa.",
+        href: "https://www.biohermes.com/products/show-29.html",
+      },
+    ],
+  },
+  {
+    title: "Elektroliti i biohemijska analiza",
+    products: [
+      {
+        name: "Elektrolitni kertridž (Eaglenos — Na⁺ / K⁺ / Cl⁻ / iCa²⁺ / iMg²⁺)",
+        description:
+          "Brza istovremena analiza natrijuma, kalijuma, hlorida, jonizovanog kalcijuma i jonizovanog magnezijuma za procenu elektrolitnog statusa, hidratacije i metaboličke ravnoteže organizma.",
+        href: "https://www.eaglenos.com/en/medical-devices-catalog/electrolyte-analyzer/",
       },
     ],
   },
@@ -387,6 +423,7 @@ export const poctGroups: PoctGroup[] = [
         name: "D-Dimer",
         description:
           "Pomoć u dijagnostici duboke venske tromboze / DVT, plućne embolije i poremećaja koagulacije.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/217",
       },
     ],
   },
@@ -424,6 +461,7 @@ export const analyzers: Analyzer[] = [
     name: "A1cChek Pro Glycohemoglobin Analyzer",
     description:
       "A1cChek Pro Glycohemoglobin Analyzer je napredni HbA1c analizator dizajniran za brzo, precizno i pouzdano praćenje glikoregulacije kod pacijenata sa dijabetesom. Zahvaljujući savremenoj tehnologiji boronatne afinitetne hromatografije, omogućava tačne rezultate za svega nekoliko minuta uz minimalnu količinu uzorka. Kompaktan dizajn, intuitivan ekran osetljiv na dodir i široke mogućnosti povezivanja čine ga idealnim rešenjem za laboratorije, privatne klinike i point-of-care centre. Omogućeno je puštanje četiri uzorka u isto vreme.",
+    image: "/imgs/analizatori/biohermes-a1ccheck-heomglobyn-analyzer.webp",
     catalogHref: "#",
     manufacturerHref: "#",
     specs: [
@@ -442,6 +480,7 @@ export const analyzers: Analyzer[] = [
     name: "ALLTEST AFR-600",
     description:
       "ALLTEST AFR-600 je savremeni POCT imunofluorescentni analizator namenjen brzoj i pouzdanoj dijagnostici širokog spektra biomarkera. Kombinujući visoku preciznost, jednostavno rukovanje i izuzetno kratko vreme očitavanja, omogućava efikasan rad u laboratorijama, ambulantama, urgentnim centrima i drugim zdravstvenim ustanovama. Ugrađeni termalni štampač, ekran osetljiv na dodir i velika memorija dodatno doprinose produktivnosti i pouzdanosti rada.",
+    image: "/imgs/analizatori/afr-600-novatrend-plus.webp",
     catalogHref: "#",
     manufacturerHref: "#",
     specs: [
@@ -459,6 +498,7 @@ export const analyzers: Analyzer[] = [
     name: "ALLTEST AFR-700",
     description:
       "ALLTEST AFR-700 je visokoperformansni imunofluorescentni analizator dizajniran za laboratorije sa većim obimom rada i potrebom za maksimalnom efikasnošću. Sa 12 nezavisnih kanala omogućeno je puštanje 12 različitih testova u isto vreme uz izuzetnu preciznost i stabilnost sistema. Savremeni softver, brzo očitavanje i kompatibilnost sa LIS sistemima čine ga idealnim rešenjem za moderne dijagnostičke centre.",
+    image: "/imgs/analizatori/aft-700-debunk-plus.webp",
     catalogHref: "#",
     manufacturerHref: "#",
     specs: [
@@ -476,6 +516,7 @@ export const analyzers: Analyzer[] = [
     name: "Eaglenos Elektrolit Analyzer",
     description:
       "Eaglenos Elektrolit Analyzer pruža brzo, precizno i stabilno određivanje ključnih elektrolita u svakodnevnom laboratorijskom radu. Baziran na savremenoj ISE tehnologiji, omogućava pouzdanu analizu uz jednostavno rukovanje i automatsku kalibraciju. Dizajniran je za bolnice, laboratorije i urgentne centre kojima su brzina i tačnost rezultata od ključnog značaja.",
+    image: "/imgs/analizatori/eaglenos-electrolyte-analizer.webp",
     catalogHref: "#",
     manufacturerHref: "#",
     specs: [
@@ -495,20 +536,31 @@ export const analyzers: Analyzer[] = [
 /* 3. FARMACEUTSKI I MEDICINSKI PROIZVODI                                      */
 /* ========================================================================== */
 
+/** A featured product within a pharma category — name, description, optional link. */
+export type PharmaProduct = {
+  name: string;
+  description: string;
+  href?: string;
+};
+
 export type PharmaCategory = {
   slug: string;
   title: string;
   description: string;
   items: string[];
+  /** Highlighted products with their own description (and optional link). */
+  products?: PharmaProduct[];
+  /** When true, the category is announced as upcoming instead of listing items. */
+  upcoming?: boolean;
 };
 
 export const pharmaCategories: PharmaCategory[] = [
   {
     slug: "suplementi",
     title: "Dijetetski suplementi",
-    description:
-      "Vitamini, minerali i preparati za imunološku podršku namenjeni svakodnevnoj prevenciji i dopuni ishrane.",
-    items: ["Vitamini", "Minerali", "Imunološka podrška"],
+    description: "Asortiman dijetetskih suplemenata uskoro u ponudi.",
+    items: [],
+    upcoming: true,
   },
   {
     slug: "flasteri",
@@ -516,6 +568,13 @@ export const pharmaCategories: PharmaCategory[] = [
     description:
       "Kinezio trake, medicinski flasteri i toplo/hladno terapijski flasteri za podršku kod bolova i oporavka.",
     items: ["Kinezio trake", "Medicinski flasteri", "Toplo/hladno terapijski flasteri"],
+    products: [
+      {
+        name: "FIT Therapy flasteri sa FIR tehnologijom",
+        description:
+          "Medicinski flasteri koji koriste Far Infrared (FIR) tehnologiju — bez lekova, bez aktivnih supstanci i bez zagrevanja. Deluju fizičkim mehanizmom refleksije infracrvenog zračenja tela, doprinoseći poboljšanju mikrocirkulacije i ublažavanju mišićno-zglobnih tegoba.",
+      },
+    ],
   },
   {
     slug: "kucni-testovi",
@@ -523,5 +582,13 @@ export const pharmaCategories: PharmaCategory[] = [
     description:
       "Jednostavni testovi za kućnu upotrebu, namenjeni brzoj i diskretnoj proveri u udobnosti doma.",
     items: ["hCG testovi za trudnoću"],
+    products: [
+      {
+        name: "COVID-19 brzi antigenski test",
+        description:
+          "Brzi antigenski test za kvalitativnu detekciju antigena virusa SARS-CoV-2 iz uzorka brisa.",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/1042",
+      },
+    ],
   },
 ];

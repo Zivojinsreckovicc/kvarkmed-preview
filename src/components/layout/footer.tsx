@@ -60,7 +60,9 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
  */
 export function Footer() {
   const year = new Date().getFullYear();
-  const quickLinks = navItems.filter((item) => !item.groups);
+  // Flat links for the footer: every top-level page except the product mega-menu,
+  // which gets its own dedicated column below.
+  const quickLinks = navItems.filter((item) => item.href !== "/proizvodi");
 
   return (
     <footer className="mt-auto bg-ink text-white">

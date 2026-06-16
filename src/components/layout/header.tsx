@@ -74,6 +74,13 @@ function MegaMenu({
   onEnter: () => void;
   onLeave: () => void;
 }) {
+  // Cards + the trailing "need help?" panel. Adapt the grid + width so a single
+  // service reads as a tidy panel while the full product menu spans four columns.
+  const cells = groups.length + 1;
+  const colClass =
+    cells <= 2 ? "lg:grid-cols-2" : cells === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4";
+  const widthClass = cells <= 2 ? "max-w-3xl" : "max-w-6xl";
+
   return (
     <div
       onMouseEnter={onEnter}
@@ -87,7 +94,13 @@ function MegaMenu({
           : "pointer-events-none -translate-y-2 opacity-0",
       )}
     >
-      <div className="mx-auto grid w-full max-w-6xl gap-5 px-6 py-10 sm:px-8 lg:grid-cols-4 lg:px-12">
+      <div
+        className={cn(
+          "mx-auto grid w-full gap-5 px-6 py-10 sm:px-8 sm:grid-cols-2 lg:px-12",
+          colClass,
+          widthClass,
+        )}
+      >
         {groups.map((group) => (
           <Link
             key={group.href}
@@ -199,20 +212,21 @@ function MobileGroup({
 export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [megaOpen, setMegaOpen] = useState(false);
+  // Which dropdown is open, keyed by the nav item's href (null = none).
+  const [openHref, setOpenHref] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const productNav = navItems.find((item) => item.groups);
+  const dropdownNav = navItems.filter((item) => item.groups);
 
-  const openMega = useCallback(() => {
+  const openMega = useCallback((href: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setMegaOpen(true);
+    setOpenHref(href);
   }, []);
 
   const closeMega = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setMegaOpen(false), 120);
+    closeTimer.current = setTimeout(() => setOpenHref(null), 120);
   }, []);
 
   // Scroll-aware styling
@@ -226,7 +240,7 @@ export function Header() {
   // Close everything on route change
   useEffect(() => {
     setMobileOpen(false);
-    setMegaOpen(false);
+    setOpenHref(null);
   }, [pathname]);
 
   // Body scroll lock + ESC while mobile overlay is open
@@ -262,14 +276,18 @@ export function Header() {
             .filter((item) => item.href !== "/kontakt")
             .map((item) =>
               item.groups ? (
-                <div key={item.href} onMouseEnter={openMega} onMouseLeave={closeMega}>
+                <div
+                  key={item.href}
+                  onMouseEnter={() => openMega(item.href)}
+                  onMouseLeave={closeMega}
+                >
                   <NavLink
                     href={item.href}
                     label={item.label}
                     active={isActive(pathname, item.href)}
                     hasChevron
-                    open={megaOpen}
-                    onFocus={openMega}
+                    open={openHref === item.href}
+                    onFocus={() => openMega(item.href)}
                   />
                 </div>
               ) : (
@@ -323,16 +341,17 @@ export function Header() {
         </button>
       </div>
 
-      {/* Desktop mega menu */}
-      {productNav?.groups ? (
+      {/* Desktop dropdown menus — one per nav item with groups */}
+      {dropdownNav.map((item) => (
         <MegaMenu
-          groups={productNav.groups}
-          open={megaOpen}
+          key={item.href}
+          groups={item.groups!}
+          open={openHref === item.href}
           pathname={pathname}
-          onEnter={openMega}
+          onEnter={() => openMega(item.href)}
           onLeave={closeMega}
         />
-      ) : null}
+      ))}
       </header>
 
       {/* Mobile full-screen overlay — rendered outside the backdrop-blur header
