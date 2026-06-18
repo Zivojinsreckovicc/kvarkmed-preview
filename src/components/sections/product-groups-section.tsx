@@ -123,7 +123,7 @@ export function ProductGroupsSection({ id = "proizvodi" }: { id?: string }) {
             <Reveal className="flex max-w-2xl flex-col gap-4">
               <Eyebrow tone="light">Proizvodi</Eyebrow>
               <h2 className="font-heading text-h2 font-semibold text-white">
-                Tri glavne grupe proizvoda
+                Kompletan asortiman na jednom mestu
               </h2>
               <p className="font-body text-base leading-relaxed text-white/70">
                 Jasna hijerarhija kategorija olakšava pronalaženje pravih rešenja. Izaberite

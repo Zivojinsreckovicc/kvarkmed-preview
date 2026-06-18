@@ -17,6 +17,7 @@ type Channel = {
   description: string;
   label: string;
   href: string;
+  extraLabels?: { label: string; href: string }[];
   external?: boolean;
   icon: React.ReactNode;
 };
@@ -27,6 +28,7 @@ const channels: Channel[] = [
     description: "Za brze informacije o proizvodima i ponudi.",
     label: contactInfo.phone.label,
     href: contactInfo.phone.href,
+    extraLabels: contactInfo.landlines.map((l) => ({ label: l.label, href: l.href })),
     icon: (
       <path
         d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"
@@ -115,8 +117,11 @@ export default function KontaktPage() {
                   </h2>
                   <p className="font-body text-sm leading-relaxed text-muted">{channel.description}</p>
                 </div>
-                <span className="mt-auto border-t border-border pt-4 font-body text-sm font-medium text-accent-700">
-                  {channel.label}
+                <span className="mt-auto flex flex-col gap-1 border-t border-border pt-4 font-body text-sm font-medium text-accent-700">
+                  <span>{channel.label}</span>
+                  {channel.extraLabels?.map((extra) => (
+                    <span key={extra.href}>{extra.label}</span>
+                  ))}
                 </span>
               </a>
             </Reveal>

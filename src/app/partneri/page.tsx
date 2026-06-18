@@ -13,7 +13,7 @@ import {
   Text,
 } from "@/components/ui";
 import { Reveal } from "@/components/motion/reveal";
-import { partnerLogos } from "@/components/sections/partners-marquee";
+import { partnerLogos, partnerLogoHref } from "@/components/sections/partners-marquee";
 import { CountersSection } from "@/components/sections/counters-section";
 import { ContactSection } from "@/components/sections/contact-section";
 
@@ -133,13 +133,9 @@ export default function PartneriPage() {
           </Reveal>
 
           <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
-            {partnerLogos.map((logo, i) => (
-              <Reveal
-                as="li"
-                key={logo.src}
-                delay={(i % 4) * 80}
-                className="flex items-center justify-center rounded-card border border-border bg-background px-6 py-10 transition-[border-color,box-shadow] duration-300 hover:border-accent-200 hover:shadow-card"
-              >
+            {partnerLogos.map((logo, i) => {
+              const href = partnerLogoHref(logo);
+              const image = (
                 <Image
                   src={logo.src}
                   alt={logo.alt}
@@ -149,8 +145,30 @@ export default function PartneriPage() {
                   sizes="(max-width: 640px) 40vw, 220px"
                   className="h-10 w-auto object-contain opacity-85 transition-opacity duration-300 hover:opacity-100 sm:h-12"
                 />
-              </Reveal>
-            ))}
+              );
+              return (
+                <Reveal
+                  as="li"
+                  key={logo.src}
+                  delay={(i % 4) * 80}
+                  className="flex items-center justify-center rounded-card border border-border bg-background px-6 py-10 transition-[border-color,box-shadow] duration-300 hover:border-accent-200 hover:shadow-card"
+                >
+                  {href ? (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${logo.alt} — sajt proizvođača`}
+                      className="flex items-center justify-center"
+                    >
+                      {image}
+                    </a>
+                  ) : (
+                    image
+                  )}
+                </Reveal>
+              );
+            })}
           </ul>
         </div>
       </Section>

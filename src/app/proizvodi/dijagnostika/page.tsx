@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Badge, Section, Text } from "@/components/ui";
+import { Section, Text } from "@/components/ui";
 import { ProductHero } from "@/components/products/product-hero";
 import { ProductInfoCard } from "@/components/products/product-info-card";
 import { Accordion } from "@/components/products/accordion";
@@ -13,8 +13,7 @@ import {
   imunoCategories,
   pcrSubsections,
   poctGroups,
-  serologyItems,
-  stiPathogens,
+  serologyGroups,
   urinTestStrips,
 } from "@/lib/products";
 
@@ -59,6 +58,7 @@ export default function DijagnostikaPage() {
           eyebrow="01 — Molekularna dijagnostika"
           title="PCR dijagnostika"
           description="Real-Time PCR testovi za preciznu detekciju i genotipizaciju, organizovani po kliničkoj nameni."
+          link={{ label: "Posetite sajt proizvođača — Genes2Me", href: "https://genes2me.com" }}
         />
 
         <div className="mt-12 flex flex-col gap-12">
@@ -72,27 +72,6 @@ export default function DijagnostikaPage() {
                   </Reveal>
                 ))}
               </div>
-
-              {subsection.title === "STI RT-PCR Testovi" ? (
-                <Reveal className="mt-2 flex flex-col gap-3 rounded-card border border-border bg-surface p-6 sm:p-7">
-                  <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-ink-soft">
-                    STI patogeni
-                  </p>
-                  <ul className="flex flex-wrap gap-2">
-                    {stiPathogens.map((pathogen) => (
-                      <li key={pathogen}>
-                        <Badge
-                          variant="neutral"
-                          size="md"
-                          className="cursor-default transition-colors duration-200 hover:bg-accent-50 hover:text-accent-700"
-                        >
-                          {pathogen}
-                        </Badge>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              ) : null}
             </div>
           ))}
         </div>
@@ -150,15 +129,30 @@ export default function DijagnostikaPage() {
                             </h5>
                           ) : null}
                           <ul className="grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
-                            {group.items.map((item) => (
-                              <li
-                                key={item}
-                                className="flex items-start gap-2.5 font-body text-sm text-ink-soft"
-                              >
-                                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-300" />
-                                {item}
-                              </li>
-                            ))}
+                            {group.items.map((item) => {
+                              const name = typeof item === "string" ? item : item.name;
+                              const href = typeof item === "string" ? undefined : item.href;
+                              return (
+                                <li
+                                  key={name}
+                                  className="flex items-start gap-2.5 font-body text-sm text-ink-soft"
+                                >
+                                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-300" />
+                                  {href ? (
+                                    <a
+                                      href={href}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="underline decoration-accent-300 underline-offset-2 transition-colors hover:text-accent-700 hover:decoration-accent-600"
+                                    >
+                                      {name}
+                                    </a>
+                                  ) : (
+                                    name
+                                  )}
+                                </li>
+                              );
+                            })}
                           </ul>
                         </div>
                       ))}
@@ -184,22 +178,53 @@ export default function DijagnostikaPage() {
           eyebrow="03 — Serologija"
           title="Serologija i imunologija"
           description="Serološki i imunološki testovi za podršku u dijagnostičkom procesu."
+          link={{ label: "Posetite sajt proizvođača — Diagnostics", href: "https://diagnostics.be/" }}
         />
 
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {serologyItems.map((item, i) => (
-            <Reveal key={item} delay={i * 70} as="li">
-              <div className="group flex h-full items-center gap-3 rounded-card border border-border bg-background p-6 transition-all duration-300 ease-premium hover:-translate-y-1 hover:border-accent-200 hover:shadow-card">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-50 text-accent-600 transition-colors duration-300 group-hover:bg-accent-600 group-hover:text-white">
-                  <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
-                    <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {serologyGroups.map((group, i) => (
+            <Reveal key={group.title} delay={i * 90} className="flex">
+              <div className="group relative flex w-full flex-col gap-5 overflow-hidden rounded-card border border-border bg-background p-8 transition-all duration-300 ease-premium hover:-translate-y-1.5 hover:border-accent-200 hover:shadow-card-hover">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-accent-600 transition-transform duration-300 ease-premium group-hover:scale-x-100"
+                />
+                <span className="font-heading text-sm font-semibold tabular-nums text-accent-400">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-body text-sm font-medium text-ink">{item}</span>
+                <h3 className="font-heading text-lg font-semibold leading-snug text-ink transition-colors group-hover:text-accent-700">
+                  {group.title}
+                </h3>
+
+                {group.items.length ? (
+                  <ul className="mt-1 flex flex-col gap-2.5 border-t border-border pt-5">
+                    {group.items.map((item) => (
+                      <li key={item.name} className="flex items-start gap-2.5 font-body text-sm text-ink-soft">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-300 transition-colors group-hover:bg-accent-600" />
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline decoration-accent-300 underline-offset-2 transition-colors hover:text-accent-700 hover:decoration-accent-600"
+                          >
+                            {item.name}
+                          </a>
+                        ) : (
+                          item.name
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-1 border-t border-border pt-5 font-body text-sm text-muted">
+                    Dostupno na upit — kontaktirajte naš tim za kompletan asortiman.
+                  </p>
+                )}
               </div>
             </Reveal>
           ))}
-        </ul>
+        </div>
       </Section>
 
       {/* ---- POCT DIJAGNOSTIKA ---- */}

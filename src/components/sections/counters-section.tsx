@@ -25,8 +25,8 @@ type CountersSectionProps = {
 };
 
 const defaultCounters: CounterItem[] = [
-  { value: 15, suffix: "+", label: "Godina iskustva" },
-  { value: 500, suffix: "+", label: "Proizvoda u ponudi" },
+  { value: 30, suffix: "", label: "Godina iskustva" },
+  { value: 40, suffix: "+", label: "Zastupanih brendova" },
   { value: 200, suffix: "+", label: "Partnerskih ustanova" },
 ];
 

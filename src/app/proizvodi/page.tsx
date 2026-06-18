@@ -30,7 +30,7 @@ const assurances = [
   },
   {
     title: "Širok asortiman",
-    text: "Tri glavne grupe proizvoda na jednom mestu, sa jasnom hijerarhijom.",
+    text: "Dijagnostika, laboratorijska oprema i farmaceutski proizvodi na jednom mestu, sa jasnom hijerarhijom.",
     icon: <path d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v5H4v-5zm9 0h7v5h-7v-5z" />,
   },
   {

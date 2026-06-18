@@ -51,6 +51,40 @@ export function ProductInfoCard({ product, className }: { product: ProductCard; 
     <p className="relative text-sm leading-relaxed text-muted">{product.description}</p>
   );
 
+  const extra = (
+    <>
+      {product.highlights?.length ? (
+        <ul className="relative flex flex-col gap-2">
+          {product.highlights.map((highlight) => (
+            <li key={highlight} className="flex items-start gap-2.5 font-body text-sm text-ink-soft">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-400" />
+              {highlight}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {product.chips?.items.length ? (
+        <div className="relative flex flex-col gap-2.5 border-t border-border pt-4">
+          {product.chips.label ? (
+            <p className="font-body text-xs font-semibold uppercase tracking-[0.12em] text-ink-soft">
+              {product.chips.label}
+            </p>
+          ) : null}
+          <ul className="flex flex-wrap gap-1.5">
+            {product.chips.items.map((item) => (
+              <li
+                key={item}
+                className="rounded-full border border-border bg-surface px-2.5 py-1 font-body text-xs font-medium text-ink-soft"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </>
+  );
+
   if (product.href) {
     return (
       <a
@@ -62,6 +96,7 @@ export function ProductInfoCard({ product, className }: { product: ProductCard; 
         {decoration}
         {title}
         {description}
+        {extra}
         <span className="relative mt-auto inline-flex items-center gap-1.5 pt-2 font-body text-sm font-medium text-accent-700">
           Pogledajte proizvod
           <span className="transition-transform duration-300 ease-premium group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -77,6 +112,7 @@ export function ProductInfoCard({ product, className }: { product: ProductCard; 
       {decoration}
       {title}
       {description}
+      {extra}
     </article>
   );
 }

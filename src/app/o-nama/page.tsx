@@ -46,7 +46,7 @@ const values = [
   {
     title: "Širok asortiman",
     description:
-      "Tri glavne grupe proizvoda — dijagnostika, laboratorijska oprema i farmaceutski proizvodi.",
+      "Dijagnostika, laboratorijska oprema i farmaceutski i medicinski proizvodi — na jednom mestu.",
     icon: <path d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v5H4v-5zm9 0h7v5h-7v-5z" />,
   },
   {
@@ -105,6 +105,31 @@ export default function ONamaPage() {
                   farmaceutskih proizvoda. Sarađujemo sa laboratorijama, klinikama, domovima
                   zdravlja, bolnicama i apotekama, uz stručnu podršku i pouzdana rešenja.
                 </Lead>
+              </Reveal>
+              <Reveal delay={250}>
+                <Text>
+                  Kvark Med je deo sistema{" "}
+                  <a
+                    href="https://kvark.rs/rs/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-accent-700 underline decoration-accent-300 underline-offset-2 transition-colors hover:text-accent-600 hover:decoration-accent-600"
+                  >
+                    Kvark doo
+                  </a>
+                  , kompanije osnovane 1992. godine. U okviru sistema posluje i{" "}
+                  <a
+                    href="https://www.kvarklab.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-accent-700 underline decoration-accent-300 underline-offset-2 transition-colors hover:text-accent-600 hover:decoration-accent-600"
+                  >
+                    KvarkLab
+                  </a>
+                  , prva privatna laboratorija u Kragujevcu akreditovana prema standardu ISO 15189,
+                  čime potvrđuje najviše standarde kvaliteta i stručnosti u oblasti medicinske
+                  laboratorijske dijagnostike.
+                </Text>
               </Reveal>
               <Reveal delay={300} className="flex flex-wrap gap-3 pt-2">
                 <Button href="/proizvodi" variant="primary">

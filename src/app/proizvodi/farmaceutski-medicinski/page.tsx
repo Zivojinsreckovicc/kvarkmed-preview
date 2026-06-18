@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Section } from "@/components/ui";
 import { ProductHero } from "@/components/products/product-hero";
-import { SectionIntro } from "@/components/products/section-intro";
 import { Reveal } from "@/components/motion/reveal";
 import { CtaBanner } from "@/components/products/cta-banner";
 import { ContactSection } from "@/components/sections/contact-section";
@@ -69,13 +68,7 @@ export default function FarmaceutskiMedicinskiPage() {
       />
 
       <Section spacing="lg" aria-label="Kategorije proizvoda">
-        <SectionIntro
-          eyebrow="Asortiman"
-          title="Tri kategorije za apoteke i ustanove"
-          description="Pregledan asortiman organizovan u tri jasne celine, sa pratećim podkategorijama."
-        />
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3">
           {pharmaCategories.map((category, i) => (
             <Reveal key={category.slug} delay={i * 90} className="flex">
               <article
@@ -97,7 +90,9 @@ export default function FarmaceutskiMedicinskiPage() {
                   <h2 className="font-heading text-lg font-semibold leading-snug text-ink transition-colors group-hover:text-accent-700">
                     {category.title}
                   </h2>
-                  <p className="text-sm leading-relaxed text-muted">{category.description}</p>
+                  {category.description ? (
+                    <p className="text-sm leading-relaxed text-muted">{category.description}</p>
+                  ) : null}
                 </div>
 
                 {category.upcoming ? (
@@ -154,6 +149,18 @@ export default function FarmaceutskiMedicinskiPage() {
                       ),
                     )}
                   </div>
+                ) : null}
+
+                {category.manufacturerHref ? (
+                  <a
+                    href={category.manufacturerHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex w-fit items-center gap-2 pt-2 font-body text-sm font-medium text-accent-700 transition-colors hover:text-accent-600"
+                  >
+                    Poseti sajt proizvođača
+                    <ExternalArrow />
+                  </a>
                 ) : null}
               </article>
             </Reveal>

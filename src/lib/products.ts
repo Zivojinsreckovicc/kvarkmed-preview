@@ -16,6 +16,10 @@ export type ProductCard = {
   description: string;
   /** Optional external link to the manufacturer's product page. */
   href?: string;
+  /** Optional bullet-point highlights shown beneath the description. */
+  highlights?: string[];
+  /** Optional labeled chip list (e.g. detected pathogens or HPV genotypes). */
+  chips?: { label?: string; items: string[] };
 };
 
 /** A named list of product names without descriptions (compact list cards). */
@@ -94,16 +98,56 @@ export const pcrSubsections: PcrSubsection[] = [
         name: "HPV-Q Real Time PCR Kit",
         description:
           "Multiplex RT-PCR test za detekciju 14 visokorizičnih HPV genotipova. Omogućava zasebnu identifikaciju HPV 16 i HPV 18, uz istovremenu detekciju dodatnih visokorizičnih tipova povezanih sa karcinomom grlića materice.",
+        href: "https://genes2me.com/ivd-real-time-pcr/reproductive-disease-solutions/hpv-real-time-pcr-kit",
+        highlights: [
+          "Omogućava pojedinačnu identifikaciju HPV 16 i HPV 18",
+          "Skrining ostalih 12 visokorizičnih (High Risk) HPV genotipova: HPV 31, 33, 35, 39, 45, 51, 52, 56, 58, 59, 66, 68",
+        ],
       },
       {
         name: "HPV-Q Comprehensive Real Time PCR Kit",
         description:
           "Napredni panel za detekciju ukupno 28 HPV genotipova (14 visokorizičnih i 14 nisko/srednjerizičnih tipova). Namenjen je sveobuhvatnom HPV skriningu, genotipizaciji i proceni rizika kod pacijenata.",
+        href: "https://genes2me.com/ivd-real-time-pcr/reproductive-disease-solutions/hpv-real-time-pcr-kit",
       },
       {
         name: "HPV-Q+ Comprehensive Real Time PCR Kit",
         description:
           "Najširi HPV panel iz Genes2Me portfolija za kompletnu analizu visokorizičnih i niskorizičnih HPV infekcija sa pojedinačnom detekcijom i genotipizacijom 28 genotipova.",
+        highlights: ["Identifikacija svih 28 genotipova (High / Medium / Low Risk)"],
+        chips: {
+          label: "28 genotipova",
+          items: [
+            "HPV 16",
+            "HPV 18",
+            "HPV 31",
+            "HPV 33",
+            "HPV 35",
+            "HPV 39",
+            "HPV 45",
+            "HPV 51",
+            "HPV 52",
+            "HPV 56",
+            "HPV 58",
+            "HPV 59",
+            "HPV 66",
+            "HPV 68",
+            "HPV 6",
+            "HPV 11",
+            "HPV 83",
+            "HPV 54",
+            "HPV 26",
+            "HPV 81",
+            "HPV 61",
+            "HPV 44",
+            "HPV 40",
+            "HPV 43",
+            "HPV 42",
+            "HPV 82",
+            "HPV 53",
+            "HPV 73",
+          ],
+        },
       },
     ],
   },
@@ -114,11 +158,43 @@ export const pcrSubsections: PcrSubsection[] = [
         name: "STI-Q Comprehensive Real Time PCR Kit / 14 patogena",
         description:
           "Multiplex panel za istovremenu detekciju najčešćih seksualno prenosivih infekcija iz jednog uzorka, omogućavajući brzu i preciznu laboratorijsku dijagnostiku.",
+        chips: {
+          label: "Detektovani patogeni",
+          items: [
+            "Mycoplasma genitalium (MG)",
+            "Trichomonas vaginalis (TV)",
+            "Neisseria gonorrhoeae (NG)",
+            "Ureaplasma urealyticum (UU)",
+            "Mycoplasma hominis (MH)",
+            "Ureaplasma parvum (UP)",
+            "Candida albicans (CA)",
+            "Haemophilus ducreyi (HD)",
+            "Toxoplasma gondii (TG)",
+            "Herpes Simplex Virus 1 (HSV-1)",
+            "Herpes Simplex Virus 2 (HSV-2)",
+            "Treponema pallidum (TP)",
+          ],
+        },
       },
       {
         name: "STI7-Q Real Time PCR Kit",
         description:
           "Panel za detekciju sedam najčešćih uzročnika seksualno prenosivih bolesti u jednoj analizi. Idealan za rutinski skrining i dijagnostiku reproduktivnih infekcija.",
+        href: "https://genes2me.com/poct/reproductive-disorder-testing-solutions/sti-rt-pcr-kits",
+        chips: {
+          label: "Detektovani patogeni",
+          items: [
+            "Chlamydia trachomatis (CT)",
+            "Trichomonas vaginalis (TV)",
+            "Neisseria gonorrhoeae (NG)",
+            "Ureaplasma urealyticum (UU)",
+            "Mycoplasma hominis (MH)",
+            "Ureaplasma parvum (UP)",
+            "Mycoplasma genitalium (MG)",
+            "Herpes Simplex Virus (HSV-1 & HSV-2)",
+            "Treponema pallidum (TP)",
+          ],
+        },
       },
     ],
   },
@@ -134,6 +210,35 @@ export const pcrSubsections: PcrSubsection[] = [
         name: "Comprehensive Respiratory Virus Panel / CRVP",
         description:
           "Napredni respiratorni panel koji omogućava detekciju i sekvenciranje više respiratornih virusa i njihovih sojeva, uključujući koronaviruse, influencu i adenoviruse.",
+      },
+      {
+        name: "RCP-Q Comprehensive Real Time PCR Kit / 19 targeta",
+        description:
+          "Sveobuhvatan panel za respiratorne bolesti — detekcija i identifikacija širokog spektra respiratornih patogena (virusa i bakterija) u okviru jednog testa, primenom jednokoračne real-time RT-PCR metode. Ovakav pristup pojednostavljuje dijagnostički proces i omogućava pravovremenu i preciznu identifikaciju uzročnika.",
+        chips: {
+          label: "Lista patogena",
+          items: [
+            "Parainfluenza 1",
+            "Parainfluenza 2",
+            "Parainfluenza 3",
+            "Parainfluenza 4",
+            "Influenza A",
+            "Influenza B",
+            "Pandemic H1N1",
+            "Enterovirus",
+            "Bocavirus",
+            "Coronavirus OC43",
+            "Coronavirus NL63",
+            "Coronavirus 229E",
+            "Coronavirus HKU1",
+            "SARS-CoV-2",
+            "Human metapneumovirus",
+            "Parechovirus",
+            "Rhinovirus",
+            "RSV A/B",
+            "Adenovirus",
+          ],
+        },
       },
     ],
   },
@@ -157,14 +262,17 @@ export const stiPathogens: string[] = [
 
 /** Test trake za urin — simple list cards. */
 export const urinTestStrips: string[] = [
-  "Urinske test trake 10 parametara",
-  "Urinske test trake 11 parametara",
+  "Urin test trake 10 parametara",
+  "Urin test trake 11 parametara",
 ];
+
+/** A single test — either a plain name, or a name with an external product link. */
+export type ImunoItem = string | { name: string; href: string };
 
 /** A subgroup of immunochromatographic tests (heading + product names). */
 export type ImunoSubgroup = {
   title?: string;
-  items: string[];
+  items: ImunoItem[];
 };
 
 /** A major category within "Imunohromatografski brzi testovi". */
@@ -184,6 +292,14 @@ export const imunoCategories: ImunoCategory[] = [
           "Campylobacter Rapid Test Cassette",
           "Clostridium difficile GDH + Toxin A + Toxin B Combo Rapid Test",
           "Clostridium difficile Toxin A + Toxin B Combo Rapid Test",
+          {
+            name: "Bacterial Diarrhea (Salmonella/C.diff) Rapid Test (Feces)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/2017",
+          },
+          {
+            name: "Calprotectin and Lactoferrin Combo Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1099",
+          },
         ],
       },
       {
@@ -269,26 +385,38 @@ export const imunoCategories: ImunoCategory[] = [
       {
         title: "Panel testovi",
         items: [
-          "DOA 3 Panel Test",
-          "DOA 5 Panel Test / ORIENT GENE",
-          "DOA 10 Panel Test / ORIENT GENE",
-          "Multi-Drug 17 Drugs Rapid Test",
+          "DOA 3 Panel Test (Urin)",
+          "DOA 5 Panel Test / ORIENT GENE (Urin)",
+          "DOA 10 Panel Test / ORIENT GENE (Urin)",
+          "Multi-Drug 17 Drugs Rapid Test (Urin)",
+          {
+            name: "Multi-Drug 6 Drugs Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1670",
+          },
+          {
+            name: "Multi-Drug 11 Drugs Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1670",
+          },
+          {
+            name: "Multi-Drug 6 Drugs Rapid Test (Saliva)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1493",
+          },
         ],
       },
       {
         title: "Pojedinačni testovi",
         items: [
-          "Alcohol Rapid Test",
-          "Benzodiazepines / BZO Rapid Test",
-          "Marijuana / THC Rapid Test",
-          "Amphetamine / AMP Rapid Test",
-          "Methamphetamine / MET Rapid Test",
-          "Ecstasy / MDMA Rapid Test",
-          "Cocaine / COC Rapid Test",
-          "Phencyclidine / PCP Rapid Test",
-          "Methadone / MTD Rapid Test",
-          "Buprenorphine / BUP Rapid Test",
-          "Cotinine Rapid Test",
+          "Alcohol Rapid Test (Urin)",
+          "Benzodiazepines / BZO Rapid Test (Urin)",
+          "Marijuana / THC Rapid Test (Urin)",
+          "Amphetamine / AMP Rapid Test (Urin)",
+          "Methamphetamine / MET Rapid Test (Urin)",
+          "Ecstasy / MDMA Rapid Test (Urin)",
+          "Cocaine / COC Rapid Test (Urin)",
+          "Phencyclidine / PCP Rapid Test (Urin)",
+          "Methadone / MTD Rapid Test (Urin)",
+          "Buprenorphine / BUP Rapid Test (Urin)",
+          "Cotinine Rapid Test (Urin)",
         ],
       },
     ],
@@ -296,13 +424,31 @@ export const imunoCategories: ImunoCategory[] = [
 ];
 
 /* ---- Serologija i imunologija ---- */
-export const serologyItems: string[] = [
-  "RPR",
-  "TPHA",
-  "Reumatoidni faktor / RF",
-  "ASO",
-  "CRP / lateks / serološki testovi",
-  "Ostali imunološki i serološki testovi",
+export type SerologyGroup = {
+  title: string;
+  items: { name: string; href?: string }[];
+};
+
+export const serologyGroups: SerologyGroup[] = [
+  {
+    title: "Serološki testovi za infekcije",
+    items: [
+      { name: "RPR", href: "https://diagnostics.be/product/22152" },
+      { name: "TPHA", href: "https://diagnostics.be/product/221920" },
+    ],
+  },
+  {
+    title: "Imunološki i inflamatorni markeri",
+    items: [
+      { name: "Reumatoidni faktor (RF)", href: "https://diagnostics.be/product/22112" },
+      { name: "ASO (Antistreptolizin O)", href: "https://diagnostics.be/product/22122" },
+      { name: "CRP lateks test", href: "https://diagnostics.be/product/221020" },
+    ],
+  },
+  {
+    title: "Ostali serološki i imunološki testovi",
+    items: [],
+  },
 ];
 
 /* ---- POCT dijagnostika ---- */
@@ -316,17 +462,17 @@ export const poctGroups: PoctGroup[] = [
     title: "Kardiološki markeri",
     products: [
       {
-        name: "Troponin I / Myoglobin / CK-MB / 3 u 1",
+        name: "Troponin I / Myoglobin / CK-MB / 3 u 1 (AllTest FIA Analizator AFR-600/AFR-700)",
         description: "Brza procena akutnog infarkta miokarda i oštećenja srčanog mišića.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/521",
       },
       {
-        name: "cTnI / Cardiac Troponin I",
+        name: "cTnI / Cardiac Troponin I (AllTest FIA Analizator AFR-600/AFR-700)",
         description: "Visoko specifičan marker za dijagnostiku infarkta miokarda.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/211",
       },
       {
-        name: "NT-proBNP",
+        name: "NT-proBNP (AllTest FIA Analizator AFR-600/AFR-700)",
         description: "Marker srčane insuficijencije i procene opterećenja srca.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/213",
       },
@@ -336,12 +482,12 @@ export const poctGroups: PoctGroup[] = [
     title: "Markeri inflamacije i infekcije",
     products: [
       {
-        name: "CRP / C-reaktivni protein",
+        name: "CRP / C-reaktivni protein (AllTest FIA Analizator AFR-600/AFR-700)",
         description: "Kvantitativno određivanje upalnih procesa i bakterijskih infekcija.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/205",
       },
       {
-        name: "ASO / Antistreptolizin O",
+        name: "ASO / Antistreptolizin O (AllTest FIA Analizator AFR-600/AFR-700)",
         description: "Detekcija prethodne ili aktuelne streptokokne infekcije.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/1487",
       },
@@ -351,7 +497,7 @@ export const poctGroups: PoctGroup[] = [
     title: "Autoimuni i reumatološki testovi",
     products: [
       {
-        name: "Rheumatoid Factor IgM / RF IgM",
+        name: "Rheumatoid Factor IgM / RF IgM (AllTest FIA Analizator AFR-600/AFR-700)",
         description:
           "Pomoć u dijagnostici reumatoidnog artritisa i drugih autoimunih oboljenja.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/1210",
@@ -362,17 +508,17 @@ export const poctGroups: PoctGroup[] = [
     title: "Gastroenterološki testovi",
     products: [
       {
-        name: "Calprotectin",
+        name: "Calprotectin (AllTest FIA Analizator AFR-600/AFR-700)",
         description: "Marker inflamatornih bolesti creva / IBD.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/612",
       },
       {
-        name: "H. pylori Antigen",
+        name: "H. pylori Antigen (AllTest FIA Analizator AFR-600/AFR-700)",
         description: "Detekcija infekcije bakterijom Helicobacter pylori iz uzorka stolice.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/607",
       },
       {
-        name: "FOB / Fecal Occult Blood",
+        name: "FOB / Fecal Occult Blood (AllTest FIA Analizator AFR-600/AFR-700)",
         description: "Otkrivanje okultnog / skrivenog krvarenja u gastrointestinalnom traktu.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/210",
       },
@@ -382,17 +528,17 @@ export const poctGroups: PoctGroup[] = [
     title: "Hematološki i metabolički testovi",
     products: [
       {
-        name: "Ferritin",
+        name: "Ferritin (AllTest FIA Analizator AFR-600/AFR-700)",
         description: "Procena zaliha gvožđa i dijagnostika anemija.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/1461",
       },
       {
-        name: "Vitamin D",
+        name: "Vitamin D (AllTest FIA Analizator AFR-600/AFR-700)",
         description: "Kvantitativno određivanje nivoa vitamina D u organizmu.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/1266",
       },
       {
-        name: "Vitamin B12 / VB12",
+        name: "Vitamin B12 / VB12 (AllTest FIA Analizator AFR-600/AFR-700)",
         description:
           "Kvantitativno određivanje nivoa vitamina B12, značajnog za hematološke i neurološke funkcije.",
         href: "https://www.alltests.com.cn/Home/ProductInfo/1509",
@@ -409,7 +555,7 @@ export const poctGroups: PoctGroup[] = [
     title: "Elektroliti i biohemijska analiza",
     products: [
       {
-        name: "Elektrolitni kertridž (Eaglenos — Na⁺ / K⁺ / Cl⁻ / iCa²⁺ / iMg²⁺)",
+        name: "Elektrolitni kertridž (Eaglenos Analizator Elektrolita – Na⁺ / K⁺ / Cl⁻ / iCa²⁺ / iMg²⁺)",
         description:
           "Brza istovremena analiza natrijuma, kalijuma, hlorida, jonizovanog kalcijuma i jonizovanog magnezijuma za procenu elektrolitnog statusa, hidratacije i metaboličke ravnoteže organizma.",
         href: "https://www.eaglenos.com/en/medical-devices-catalog/electrolyte-analyzer/",
@@ -466,7 +612,7 @@ export const analyzers: Analyzer[] = [
     image: "/imgs/analizatori/biohermes-a1ccheck-heomglobyn-analyzer.webp",
     imageClassName: "object-contain p-6",
     catalogHref: "/analizatori-pdfs/biohermes-a1cchek-pro-glikohemoglobin-analizator-katalog.pdf",
-    manufacturerHref: "#",
+    manufacturerHref: "https://www.biohermes.com/products/show-29.html",
     specs: [
       { key: "Parametar", value: "HbA1c" },
       { key: "Tehnologija", value: "Boronate Affinity Chromatography" },
@@ -485,7 +631,7 @@ export const analyzers: Analyzer[] = [
       "ALLTEST AFR-600 je savremeni POCT imunofluorescentni analizator namenjen brzoj i pouzdanoj dijagnostici širokog spektra biomarkera. Kombinujući visoku preciznost, jednostavno rukovanje i izuzetno kratko vreme očitavanja, omogućava efikasan rad u laboratorijama, ambulantama, urgentnim centrima i drugim zdravstvenim ustanovama. Ugrađeni termalni štampač, ekran osetljiv na dodir i velika memorija dodatno doprinose produktivnosti i pouzdanosti rada.",
     image: "/imgs/analizatori/afr-600-novatrend-plus.webp",
     catalogHref: "/analizatori-pdfs/alltest-afr-600-imunofluorescentni-analizator-katalog.pdf",
-    manufacturerHref: "#",
+    manufacturerHref: "https://www.alltests.com.cn/Home/ProductInfo/549",
     specs: [
       { key: "Tip analizatora", value: "Fluorescent Immunoassay" },
       { key: "Broj kanala", value: "Single Channel" },
@@ -503,7 +649,7 @@ export const analyzers: Analyzer[] = [
       "ALLTEST AFR-700 je visokoperformansni imunofluorescentni analizator dizajniran za laboratorije sa većim obimom rada i potrebom za maksimalnom efikasnošću. Sa 12 nezavisnih kanala omogućeno je puštanje 12 različitih testova u isto vreme uz izuzetnu preciznost i stabilnost sistema. Savremeni softver, brzo očitavanje i kompatibilnost sa LIS sistemima čine ga idealnim rešenjem za moderne dijagnostičke centre.",
     image: "/imgs/analizatori/aft-700-debunk-plus.webp",
     catalogHref: "/analizatori-pdfs/alltest-afr-700-imunofluorescentni-analizator-katalog.pdf",
-    manufacturerHref: "#",
+    manufacturerHref: "https://www.alltests.com.cn/Home/ProductInfo/553",
     specs: [
       { key: "Tip analizatora", value: "Fluorescence Immunoassay" },
       { key: "Broj kanala", value: "12 kanala" },
@@ -521,7 +667,7 @@ export const analyzers: Analyzer[] = [
       "Eaglenos Elektrolit Analyzer pruža brzo, precizno i stabilno određivanje ključnih elektrolita u svakodnevnom laboratorijskom radu. Baziran na savremenoj ISE tehnologiji, omogućava pouzdanu analizu uz jednostavno rukovanje i automatsku kalibraciju. Dizajniran je za bolnice, laboratorije i urgentne centre kojima su brzina i tačnost rezultata od ključnog značaja.",
     image: "/imgs/analizatori/eaglenos-electrolyte-analizer.webp",
     catalogHref: "/analizatori-pdfs/eaglenos-elektrolit-analizator-katalog.pdf",
-    manufacturerHref: "#",
+    manufacturerHref: "https://www.eaglenos.com/en/medical-devices-catalog/electrolyte-analyzer/",
     specs: [
       { key: "Parametri", value: "Na+, K+, Cl−, Ca++, Mg++" },
       { key: "Tehnologija", value: "ISE tehnologija" },
@@ -549,10 +695,12 @@ export type PharmaProduct = {
 export type PharmaCategory = {
   slug: string;
   title: string;
-  description: string;
+  description?: string;
   items: string[];
   /** Highlighted products with their own description (and optional link). */
   products?: PharmaProduct[];
+  /** Manufacturer website for this category. */
+  manufacturerHref?: string;
   /** When true, the category is announced as upcoming instead of listing items. */
   upcoming?: boolean;
 };
@@ -563,14 +711,15 @@ export const pharmaCategories: PharmaCategory[] = [
     title: "Dijetetski suplementi",
     description: "Asortiman dijetetskih suplemenata uskoro u ponudi.",
     items: [],
+    manufacturerHref:
+      "https://www.themyricals.de/en?srsltid=AfmBOoo6fsAWVmdXRmA8xctLBlXa2UAUOuINwe9ZhaVWA9PNuaEE11j-",
     upcoming: true,
   },
   {
     slug: "flasteri",
-    title: "Flasteri i trake za bolove",
-    description:
-      "Kinezio trake, medicinski flasteri i toplo/hladno terapijski flasteri za podršku kod bolova i oporavka.",
-    items: ["Kinezio trake", "Medicinski flasteri", "Toplo/hladno terapijski flasteri"],
+    title: "Medicinski flasteri",
+    items: [],
+    manufacturerHref: "https://fittherapy.biz/en/",
     products: [
       {
         name: "FIT Therapy flasteri sa FIR tehnologijom",
@@ -585,6 +734,7 @@ export const pharmaCategories: PharmaCategory[] = [
     description:
       "Jednostavni testovi za kućnu upotrebu, namenjeni brzoj i diskretnoj proveri u udobnosti doma.",
     items: ["hCG testovi za trudnoću"],
+    manufacturerHref: "https://www.alltests.com.cn/",
     products: [
       {
         name: "COVID-19 brzi antigenski test",

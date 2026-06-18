@@ -6,6 +6,10 @@
 /** Single source of truth for company contact details used sitewide. */
 export const contactInfo = {
   phone: { label: "063/494-590", href: "tel:+38163494590" },
+  landlines: [
+    { label: "034/352-702", href: "tel:+38134352702" },
+    { label: "034/333-229", href: "tel:+38134333229" },
+  ],
   email: { label: "kvarkmed@kvark.rs", href: "mailto:kvarkmed@kvark.rs" },
   address: {
     label: "Industrijska BB, 34000 Kragujevac",

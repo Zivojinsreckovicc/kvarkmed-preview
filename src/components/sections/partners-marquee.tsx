@@ -8,19 +8,26 @@ export type PartnerLogo = {
   alt: string;
   width: number;
   height: number;
+  /** Manufacturer website. Replace "#" placeholders with real URLs to make the logo clickable. */
+  href?: string;
 };
 
 export const partnerLogos: PartnerLogo[] = [
-  { src: "/imgs/partners-logos/partner1.webp", alt: "Logo partnera", width: 272, height: 374 },
-  { src: "/imgs/partners-logos/partner2.webp", alt: "Logo partnera", width: 434, height: 144 },
-  { src: "/imgs/partners-logos/partner3.webp", alt: "Logo partnera", width: 378, height: 392 },
-  { src: "/imgs/partners-logos/partner4.webp", alt: "Logo partnera", width: 536, height: 186 },
-  { src: "/imgs/partners-logos/partner5.webp", alt: "Logo partnera", width: 486, height: 190 },
-  { src: "/imgs/partners-logos/partner6.webp", alt: "Logo partnera", width: 418, height: 176 },
-  { src: "/imgs/partners-logos/partner7.webp", alt: "Logo partnera", width: 546, height: 172 },
-  { src: "/imgs/partners-logos/partner10.webp", alt: "Logo partnera", width: 488, height: 104 },
-  { src: "/imgs/partners-logos/partner11.webp", alt: "Logo partnera", width: 472, height: 156 },
+  { src: "/imgs/partners-logos/partner1.webp", alt: "Logo partnera", width: 272, height: 374, href: "#" },
+  { src: "/imgs/partners-logos/partner2.webp", alt: "Logo partnera", width: 434, height: 144, href: "#" },
+  { src: "/imgs/partners-logos/partner3.webp", alt: "Logo partnera", width: 378, height: 392, href: "#" },
+  { src: "/imgs/partners-logos/partner4.webp", alt: "Logo partnera", width: 536, height: 186, href: "#" },
+  { src: "/imgs/partners-logos/partner5.webp", alt: "Logo partnera", width: 486, height: 190, href: "#" },
+  { src: "/imgs/partners-logos/partner6.webp", alt: "Logo partnera", width: 418, height: 176, href: "#" },
+  { src: "/imgs/partners-logos/partner7.webp", alt: "Logo partnera", width: 546, height: 172, href: "#" },
+  { src: "/imgs/partners-logos/partner10.webp", alt: "Logo partnera", width: 488, height: 104, href: "#" },
+  { src: "/imgs/partners-logos/partner11.webp", alt: "Logo partnera", width: 472, height: 156, href: "#" },
 ];
+
+/** A logo is clickable only once a real manufacturer URL replaces the "#" placeholder. */
+export function partnerLogoHref(logo: PartnerLogo): string | undefined {
+  return logo.href && logo.href !== "#" ? logo.href : undefined;
+}
 
 type PartnersMarqueeProps = {
   id?: string;
@@ -30,17 +37,34 @@ type PartnersMarqueeProps = {
 };
 
 function LogoItem({ logo, hidden }: { logo: PartnerLogo; hidden?: boolean }) {
+  const href = partnerLogoHref(logo);
+  const image = (
+    <Image
+      src={logo.src}
+      alt={hidden ? "" : logo.alt}
+      width={logo.width}
+      height={logo.height}
+      loading="lazy"
+      sizes="200px"
+      className="h-9 w-auto object-contain opacity-80 transition-opacity duration-300 hover:opacity-100 sm:h-11"
+    />
+  );
   return (
     <li className="flex shrink-0 items-center justify-center px-8 sm:px-12" aria-hidden={hidden}>
-      <Image
-        src={logo.src}
-        alt={hidden ? "" : logo.alt}
-        width={logo.width}
-        height={logo.height}
-        loading="lazy"
-        sizes="200px"
-        className="h-9 w-auto object-contain opacity-80 transition-opacity duration-300 hover:opacity-100 sm:h-11"
-      />
+      {href ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${logo.alt} — sajt proizvođača`}
+          tabIndex={hidden ? -1 : undefined}
+          className="flex items-center"
+        >
+          {image}
+        </a>
+      ) : (
+        image
+      )}
     </li>
   );
 }
