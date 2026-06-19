@@ -237,16 +237,29 @@ export const imunoCategories: ImunoCategory[] = [
             name: "Strep A Test Card",
             href: "https://www.alltests.com.cn/Home/ProductInfo/57",
           },
-          "Mycoplasma pneumoniae Antigen Rapid Test",
+          {
+            name: "Mycoplasma pneumoniae Antigen Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/60",
+          },
         ],
       },
       {
         title: "Polno prenosive infekcije",
-        items: ["CHLAMYTOP Rapid Test Cassette"],
+        items: [
+          {
+            name: "CHLAMYTOP Rapid Test Cassette",
+            href: "https://www.biosynex.com/products/biologiste-medecin/rdt/?lang=en",
+          },
+        ],
       },
       {
         title: "Sistemske bakterijske infekcije",
-        items: ["Leptospira IgG/IgM Rapid Test Cassette"],
+        items: [
+          {
+            name: "Leptospira IgG/IgM Rapid Test Cassette",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/2008",
+          },
+        ],
       },
     ],
   },
@@ -388,9 +401,18 @@ export const imunoCategories: ImunoCategory[] = [
       {
         title: "Panel testovi",
         items: [
-          "DOA 3 Panel Test (Urin)",
-          "DOA 5 Panel Test / ORIENT GENE (Urin)",
-          "DOA 10 Panel Test / ORIENT GENE (Urin)",
+          {
+            name: "DOA 3 Panel Test (Urin)",
+            href: "https://www.orientgene.com/product/info/72.html",
+          },
+          {
+            name: "DOA 5 Panel Test / ORIENT GENE (Urin)",
+            href: "https://www.orientgene.com/product/info/72.html",
+          },
+          {
+            name: "DOA 10 Panel Test / ORIENT GENE (Urin)",
+            href: "https://www.orientgene.com/product/info/72.html",
+          },
           {
             name: "Multi-Drug 17 Drugs Rapid Test (Urin)",
             href: "https://www.alltests.com.cn/Home/ProductInfo/1495",
@@ -452,7 +474,10 @@ export const imunoCategories: ImunoCategory[] = [
             name: "Buprenorphine / BUP Rapid Test (Urin)",
             href: "https://www.alltests.com.cn/Home/ProductInfo/921",
           },
-          "Cotinine Rapid Test (Urin)",
+          {
+            name: "Cotinine Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/98",
+          },
         ],
       },
     ],

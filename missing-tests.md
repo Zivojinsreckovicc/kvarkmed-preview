@@ -77,17 +77,20 @@ pa ga je dovoljno samo ubaciti u `src/lib/products.ts` ako test treba dodati.
 
 ---
 
-## Dodatna napomena — testovi na stranici bez linka u tabeli
+## Dodatna napomena — testovi na stranici bez linka
 
-Sledeći testovi se **već nalaze** na stranici, ali za njih u `lista-sa-linkovima.xlsx`
-ne postoji link (ili nisu deo ALLTEST tabele), pa link ka proizvođaču nije dodat:
+Sledeći testovi su naknadno dobili link ka proizvođaču (dostavljeno odvojeno od tabele)
+i sada su klikabilni na stranici:
 
-- **Mycoplasma pneumoniae Antigen Rapid Test** — moguće da odgovara stavci „BIOSYNEX MYCOPLASMATEST" (tabela nema link)
-- **CHLAMYTOP Rapid Test Cassette** — u tabeli (kat. 1030003), ali bez linka
-- **Leptospira IgG/IgM Rapid Test Cassette** — nije u tabeli
-- **HAV IgG/IgM Rapid Test** — nije u tabeli
-- **Cotinine Rapid Test (Urin)** — nije u tabeli
-- **DOA 3 / 5 / 10 Panel Test (Orient Gene)** — u tabeli kao „One Step Multi-Drug Screen Test" (GBDOA-135 / GBDOA-155 / GBDOA-1105), ali bez linka
+- **Mycoplasma pneumoniae Antigen Rapid Test** → https://www.alltests.com.cn/Home/ProductInfo/60
+- **CHLAMYTOP Rapid Test Cassette** → https://www.biosynex.com/products/biologiste-medecin/rdt/?lang=en
+- **Leptospira IgG/IgM Rapid Test Cassette** → https://www.alltests.com.cn/Home/ProductInfo/2008
+- **DOA 3 / 5 / 10 Panel Test (Orient Gene)** → https://www.orientgene.com/product/info/72.html
+- **Cotinine Rapid Test (Urin)** → https://www.alltests.com.cn/Home/ProductInfo/98
+
+Jedini test na stranici koji još uvek nema link ka proizvođaču:
+
+- **HAV IgG/IgM Rapid Test** — link nije dostavljen
 
 PCR testovi (Genes2Me) i serološki testovi (Cypress Diagnostics / diagnostics.be) nisu
 deo ove ALLTEST tabele; oni već imaju sopstvene linkove ka proizvođaču tamo gde postoje.
