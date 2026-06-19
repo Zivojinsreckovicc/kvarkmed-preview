@@ -260,10 +260,18 @@ export const stiPathogens: string[] = [
 
 /* ---- Brzi dijagnostički testovi ---- */
 
-/** Test trake za urin — simple list cards. */
-export const urinTestStrips: string[] = [
-  "Urin test trake 10 parametara",
-  "Urin test trake 11 parametara",
+/** Test trake za urin — simple list cards with an optional manufacturer link. */
+export type UrinTestStrip = { name: string; href?: string };
+
+export const urinTestStrips: UrinTestStrip[] = [
+  {
+    name: "Urin test trake 10 parametara",
+    href: "https://www.alltests.com.cn/Home/ProductInfo/204",
+  },
+  {
+    name: "Urin test trake 11 parametara",
+    href: "https://www.alltests.com.cn/Home/ProductInfo/204",
+  },
 ];
 
 /** A single test — either a plain name, or a name with an external product link. */
@@ -288,10 +296,22 @@ export const imunoCategories: ImunoCategory[] = [
       {
         title: "Gastrointestinalne bakterijske infekcije",
         items: [
-          "H. pylori Antigen Rapid Test Cassette",
-          "Campylobacter Rapid Test Cassette",
-          "Clostridium difficile GDH + Toxin A + Toxin B Combo Rapid Test",
-          "Clostridium difficile Toxin A + Toxin B Combo Rapid Test",
+          {
+            name: "H. pylori Antigen Rapid Test Cassette",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/31",
+          },
+          {
+            name: "Campylobacter Rapid Test Cassette",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/28",
+          },
+          {
+            name: "Clostridium difficile GDH + Toxin A + Toxin B Combo Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/29",
+          },
+          {
+            name: "Clostridium difficile Toxin A + Toxin B Combo Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/994",
+          },
           {
             name: "Bacterial Diarrhea (Salmonella/C.diff) Rapid Test (Feces)",
             href: "https://www.alltests.com.cn/Home/ProductInfo/2017",
@@ -304,7 +324,13 @@ export const imunoCategories: ImunoCategory[] = [
       },
       {
         title: "Respiratorne bakterijske infekcije",
-        items: ["Strep A Test Card", "Mycoplasma pneumoniae Antigen Rapid Test"],
+        items: [
+          {
+            name: "Strep A Test Card",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/57",
+          },
+          "Mycoplasma pneumoniae Antigen Rapid Test",
+        ],
       },
       {
         title: "Polno prenosive infekcije",
@@ -322,32 +348,77 @@ export const imunoCategories: ImunoCategory[] = [
       {
         title: "Respiratorni virusi",
         items: [
-          "SARS-CoV-2 Antigen Rapid Test",
-          "RSV Rapid Test",
-          "Influenza A+B Rapid Test",
-          "SARS-CoV-2/Influenza A+B/RSV Combo Test",
-          "Adeno/Influenza A+B/RSV Combo Test",
-          "Multiplex Respiratory Antigen Rapid Test",
+          {
+            name: "SARS-CoV-2 Antigen Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1042",
+          },
+          {
+            name: "RSV Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/68",
+          },
+          {
+            name: "Influenza A+B Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/65",
+          },
+          {
+            name: "SARS-CoV-2/Influenza A+B/RSV Combo Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/557",
+          },
+          {
+            name: "Adeno/Influenza A+B/RSV Combo Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/69",
+          },
+          {
+            name: "Multiplex Respiratory Antigen Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1309",
+          },
         ],
       },
       {
         title: "Gastrointestinalni virusi",
         items: [
-          "Rotavirus Rapid Test",
-          "Norovirus Rapid Test",
-          "Adeno/Rota Combo Test",
-          "Norovirus + Rotavirus + Adenovirus + Astrovirus Combo Test",
+          {
+            name: "Rotavirus Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/981",
+          },
+          {
+            name: "Norovirus Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/982",
+          },
+          {
+            name: "Adeno/Rota Combo Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/984",
+          },
+          {
+            name: "Norovirus + Rotavirus + Adenovirus + Astrovirus Combo Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/25",
+          },
         ],
       },
       {
         title: "Sistemske virusne infekcije",
         items: [
-          "HCV Rapid Test",
-          "HIV 1/2 Rapid Test",
-          "HBsAg Rapid Test",
+          {
+            name: "HCV Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1019",
+          },
+          {
+            name: "HIV 1/2 Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1022",
+          },
+          {
+            name: "HBsAg Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1013",
+          },
           "HAV IgG/IgM Rapid Test",
-          "Monkeypox Antigen Rapid Test",
-          "Mononucleosis Rapid Test",
+          {
+            name: "Monkeypox Antigen Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/559",
+          },
+          {
+            name: "Mononucleosis Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/63",
+          },
         ],
       },
     ],
@@ -356,7 +427,16 @@ export const imunoCategories: ImunoCategory[] = [
     title: "Parazitologija",
     subgroups: [
       {
-        items: ["Entamoeba / Giardia / Crypto Rapid Test", "Trichomonas Vaginalis Rapid Test"],
+        items: [
+          {
+            name: "Entamoeba / Giardia / Crypto Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/27",
+          },
+          {
+            name: "Trichomonas Vaginalis Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/21",
+          },
+        ],
       },
     ],
   },
@@ -364,7 +444,16 @@ export const imunoCategories: ImunoCategory[] = [
     title: "Kardiologija",
     subgroups: [
       {
-        items: ["Cardiac Troponin I Rapid Test", "Myoglobin / CK-MB / Troponin I Combo Test"],
+        items: [
+          {
+            name: "Cardiac Troponin I Rapid Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/168",
+          },
+          {
+            name: "Myoglobin / CK-MB / Troponin I Combo Test",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1107",
+          },
+        ],
       },
     ],
   },
@@ -373,8 +462,14 @@ export const imunoCategories: ImunoCategory[] = [
     subgroups: [
       {
         items: [
-          "FOB Antigen Rapid Test Cassette",
-          "Transferrin / FOB / Hb-Hp Combo Rapid Test Cassette",
+          {
+            name: "FOB Antigen Rapid Test Cassette",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1085",
+          },
+          {
+            name: "Transferrin / FOB / Hb-Hp Combo Rapid Test Cassette",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/167",
+          },
         ],
       },
     ],
@@ -388,7 +483,10 @@ export const imunoCategories: ImunoCategory[] = [
           "DOA 3 Panel Test (Urin)",
           "DOA 5 Panel Test / ORIENT GENE (Urin)",
           "DOA 10 Panel Test / ORIENT GENE (Urin)",
-          "Multi-Drug 17 Drugs Rapid Test (Urin)",
+          {
+            name: "Multi-Drug 17 Drugs Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/1495",
+          },
           {
             name: "Multi-Drug 6 Drugs Rapid Test (Urin)",
             href: "https://www.alltests.com.cn/Home/ProductInfo/1670",
@@ -406,16 +504,46 @@ export const imunoCategories: ImunoCategory[] = [
       {
         title: "Pojedinačni testovi",
         items: [
-          "Alcohol Rapid Test (Urin)",
-          "Benzodiazepines / BZO Rapid Test (Urin)",
-          "Marijuana / THC Rapid Test (Urin)",
-          "Amphetamine / AMP Rapid Test (Urin)",
-          "Methamphetamine / MET Rapid Test (Urin)",
-          "Ecstasy / MDMA Rapid Test (Urin)",
-          "Cocaine / COC Rapid Test (Urin)",
-          "Phencyclidine / PCP Rapid Test (Urin)",
-          "Methadone / MTD Rapid Test (Urin)",
-          "Buprenorphine / BUP Rapid Test (Urin)",
+          {
+            name: "Alcohol Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/197",
+          },
+          {
+            name: "Benzodiazepines / BZO Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/90",
+          },
+          {
+            name: "Marijuana / THC Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/936",
+          },
+          {
+            name: "Amphetamine / AMP Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/917",
+          },
+          {
+            name: "Methamphetamine / MET Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/113",
+          },
+          {
+            name: "Ecstasy / MDMA Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/110",
+          },
+          {
+            name: "Cocaine / COC Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/925",
+          },
+          {
+            name: "Phencyclidine / PCP Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/125",
+          },
+          {
+            name: "Methadone / MTD Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/952",
+          },
+          {
+            name: "Buprenorphine / BUP Rapid Test (Urin)",
+            href: "https://www.alltests.com.cn/Home/ProductInfo/921",
+          },
           "Cotinine Rapid Test (Urin)",
         ],
       },

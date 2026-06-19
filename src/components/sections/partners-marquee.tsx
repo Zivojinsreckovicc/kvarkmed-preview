@@ -13,15 +13,15 @@ export type PartnerLogo = {
 };
 
 export const partnerLogos: PartnerLogo[] = [
-  { src: "/imgs/partners-logos/partner1.webp", alt: "Logo partnera", width: 272, height: 374, href: "#" },
-  { src: "/imgs/partners-logos/partner2.webp", alt: "Logo partnera", width: 434, height: 144, href: "#" },
-  { src: "/imgs/partners-logos/partner3.webp", alt: "Logo partnera", width: 378, height: 392, href: "#" },
-  { src: "/imgs/partners-logos/partner4.webp", alt: "Logo partnera", width: 536, height: 186, href: "#" },
-  { src: "/imgs/partners-logos/partner5.webp", alt: "Logo partnera", width: 486, height: 190, href: "#" },
-  { src: "/imgs/partners-logos/partner6.webp", alt: "Logo partnera", width: 418, height: 176, href: "#" },
-  { src: "/imgs/partners-logos/partner7.webp", alt: "Logo partnera", width: 546, height: 172, href: "#" },
-  { src: "/imgs/partners-logos/partner10.webp", alt: "Logo partnera", width: 488, height: 104, href: "#" },
-  { src: "/imgs/partners-logos/partner11.webp", alt: "Logo partnera", width: 472, height: 156, href: "#" },
+  { src: "/imgs/partners-logos/partner1.webp", alt: "Cypress Diagnostics logo", width: 272, height: 374, href: "https://diagnostics.be/" },
+  { src: "/imgs/partners-logos/partner2.webp", alt: "RainSure Scientific logo", width: 434, height: 144, href: "https://www.rainsurebio.com/" },
+  { src: "/imgs/partners-logos/partner3.webp", alt: "Orient Gene logo", width: 378, height: 392, href: "https://www.orientgene.com/" },
+  { src: "/imgs/partners-logos/partner4.webp", alt: "Healgen logo", width: 536, height: 186, href: "https://healgen.com/" },
+  { src: "/imgs/partners-logos/partner5.webp", alt: "AllTest logo", width: 486, height: 190, href: "https://www.alltests.com.cn/#home" },
+  { src: "/imgs/partners-logos/partner6.webp", alt: "Genes2Me logo", width: 418, height: 176, href: "https://www.genes2me.com/" },
+  { src: "/imgs/partners-logos/partner7.webp", alt: "Wantai logo", width: 546, height: 172, href: "https://www.ystwt.cn/" },
+  { src: "/imgs/partners-logos/partner10.webp", alt: "Biosynex logo", width: 488, height: 104, href: "https://www.biosynex.com/?lang=en" },
+  { src: "/imgs/partners-logos/partner11.webp", alt: "Eaglenos logo", width: 472, height: 156, href: "https://www.eaglenos.com/en/" },
 ];
 
 /** A logo is clickable only once a real manufacturer URL replaces the "#" placeholder. */

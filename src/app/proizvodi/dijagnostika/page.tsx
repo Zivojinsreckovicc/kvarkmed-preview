@@ -90,10 +90,21 @@ export default function DijagnostikaPage() {
           <SubHeading>Test trake za urin</SubHeading>
           <div className="grid gap-5 sm:grid-cols-2 lg:max-w-2xl">
             {urinTestStrips.map((strip, i) => (
-              <Reveal key={strip} delay={i * 80}>
+              <Reveal key={strip.name} delay={i * 80}>
                 <div className="group flex items-center gap-3 rounded-card border border-border bg-background p-6 transition-all duration-300 ease-premium hover:-translate-y-1 hover:border-accent-200 hover:shadow-card">
                   <span className="h-2 w-2 shrink-0 rounded-full bg-accent-600 transition-transform duration-300 group-hover:scale-150" />
-                  <span className="font-body text-sm font-medium text-ink">{strip}</span>
+                  {strip.href ? (
+                    <a
+                      href={strip.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body text-sm font-medium text-ink underline decoration-accent-300 underline-offset-2 transition-colors hover:text-accent-700 hover:decoration-accent-600"
+                    >
+                      {strip.name}
+                    </a>
+                  ) : (
+                    <span className="font-body text-sm font-medium text-ink">{strip.name}</span>
+                  )}
                 </div>
               </Reveal>
             ))}
