@@ -135,6 +135,7 @@ export default function PartneriPage() {
           <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
             {partnerLogos.map((logo, i) => {
               const href = partnerLogoHref(logo);
+              const partnerName = logo.alt.replace(/ logo$/i, "");
               const image = (
                 <Image
                   src={logo.src}
@@ -151,18 +152,28 @@ export default function PartneriPage() {
                   as="li"
                   key={logo.src}
                   delay={(i % 4) * 80}
-                  className="flex items-center justify-center rounded-card border border-border bg-background px-6 py-10 transition-[border-color,box-shadow] duration-300 hover:border-accent-200 hover:shadow-card"
+                  className="flex flex-col items-center justify-center gap-5 rounded-card border border-border bg-background px-6 py-10 transition-[border-color,box-shadow] duration-300 hover:border-accent-200 hover:shadow-card"
                 >
                   {href ? (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${logo.alt} — sajt proizvođača`}
-                      className="flex items-center justify-center"
-                    >
-                      {image}
-                    </a>
+                    <>
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${logo.alt} — sajt proizvođača`}
+                        className="flex items-center justify-center"
+                      >
+                        {image}
+                      </a>
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-body text-sm font-semibold text-accent-700 underline decoration-accent-300 underline-offset-4 transition-colors hover:text-accent-900"
+                      >
+                        Posetite sajt — {partnerName}
+                      </a>
+                    </>
                   ) : (
                     image
                   )}

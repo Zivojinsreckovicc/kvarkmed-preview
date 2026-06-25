@@ -124,6 +124,15 @@ export function ContactSection({
                     <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.5" />
                   </svg>
                 </ContactDetail>
+                <div className="flex items-center gap-3 font-body text-sm text-white/90">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-4 w-4">
+                      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  Radno vreme: {contactInfo.workingHours}
+                </div>
               </address>
 
               <div className="flex flex-col gap-4 border-t border-white/15 pt-6">

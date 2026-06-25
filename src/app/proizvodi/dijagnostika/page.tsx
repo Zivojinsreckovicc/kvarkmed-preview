@@ -189,7 +189,7 @@ export default function DijagnostikaPage() {
           eyebrow="03 — Serologija"
           title="Serologija i imunologija"
           description="Serološki i imunološki testovi za podršku u dijagnostičkom procesu."
-          link={{ label: "Posetite sajt proizvođača — Diagnostics", href: "https://diagnostics.be/" }}
+          link={{ label: "Posetite sajt proizvođača — Cypress Diagnostics", href: "https://diagnostics.be/" }}
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">

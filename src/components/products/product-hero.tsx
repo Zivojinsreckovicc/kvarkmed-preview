@@ -10,6 +10,8 @@ type ProductHeroProps = {
   title: string;
   description?: string;
   crumbs: Crumb[];
+  /** Optional visual rendered in a second column on larger screens. */
+  aside?: React.ReactNode;
   /** Optional quick-jump links rendered as pills under the lead. */
   quickLinks?: { label: string; href: string }[];
   /** Render the quote + call action buttons (default true). */
@@ -39,6 +41,7 @@ export function ProductHero({
   title,
   description,
   crumbs,
+  aside,
   quickLinks,
   actions = true,
 }: ProductHeroProps) {
@@ -76,52 +79,60 @@ export function ProductHero({
           </ol>
         </Reveal>
 
-        <div className="flex max-w-3xl flex-col gap-5">
-          <Reveal delay={60}>
-            <Eyebrow tone="light">{eyebrow}</Eyebrow>
-          </Reveal>
-          <Reveal delay={120}>
-            <Heading level="display" className="text-white">
-              {title}
-            </Heading>
-          </Reveal>
-          {description ? (
-            <Reveal delay={200}>
-              <Lead className="text-white/75">{description}</Lead>
+        <div className={aside ? "grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_22rem]" : undefined}>
+          <div className="flex max-w-3xl flex-col gap-5">
+            <Reveal delay={60}>
+              <Eyebrow tone="light">{eyebrow}</Eyebrow>
             </Reveal>
-          ) : null}
-
-          {actions ? (
-            <Reveal delay={260} className="mt-2 flex flex-wrap gap-3">
-              <Button href="#kontakt" variant="on-accent" size="lg">
-                Zatražite ponudu
-              </Button>
-              <Button
-                href={contactInfo.phone.href}
-                variant="outline"
-                size="lg"
-                className="border-white/30 bg-transparent text-white hover:border-white hover:text-white"
-              >
-                <PhoneIcon />
-                {contactInfo.phone.label}
-              </Button>
+            <Reveal delay={120}>
+              <Heading level="display" className="text-white">
+                {title}
+              </Heading>
             </Reveal>
-          ) : null}
+            {description ? (
+              <Reveal delay={200}>
+                <Lead className="text-white/75">{description}</Lead>
+              </Reveal>
+            ) : null}
 
-          {quickLinks?.length ? (
-            <Reveal delay={340} className="mt-2">
-              <ul className="flex flex-wrap gap-2.5">
-                {quickLinks.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 font-body text-sm font-medium text-white/85 backdrop-blur-sm transition-all duration-200 hover:border-white/40 hover:bg-white/10 hover:text-white"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            {actions ? (
+              <Reveal delay={260} className="mt-2 flex flex-wrap gap-3">
+                <Button href="#kontakt" variant="on-accent" size="lg">
+                  Zatražite ponudu
+                </Button>
+                <Button
+                  href={contactInfo.phone.href}
+                  variant="outline"
+                  size="lg"
+                  className="border-white/30 bg-transparent text-white hover:border-white hover:text-white"
+                >
+                  <PhoneIcon />
+                  {contactInfo.phone.label}
+                </Button>
+              </Reveal>
+            ) : null}
+
+            {quickLinks?.length ? (
+              <Reveal delay={340} className="mt-2">
+                <ul className="flex flex-wrap gap-2.5">
+                  {quickLinks.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 font-body text-sm font-medium text-white/85 backdrop-blur-sm transition-all duration-200 hover:border-white/40 hover:bg-white/10 hover:text-white"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ) : null}
+          </div>
+
+          {aside ? (
+            <Reveal delay={220} className="hidden lg:block">
+              {aside}
             </Reveal>
           ) : null}
         </div>

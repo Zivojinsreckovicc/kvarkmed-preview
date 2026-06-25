@@ -143,13 +143,16 @@ export default function KontaktPage() {
             <Eyebrow>Lokacija</Eyebrow>
             <Heading level="h2">Gde se nalazimo</Heading>
             <Lead>{contactInfo.address.label}</Lead>
+            <p className="font-body text-base text-muted">
+              Radno vreme: {contactInfo.workingHours}
+            </p>
           </div>
           <div className="overflow-hidden rounded-card border border-border">
             <iframe
-              title="Mapa — Kvark Med, Industrijska BB, Kragujevac"
-              src="https://maps.google.com/maps?q=Industrijska%20BB%2C%2034000%20Kragujevac&z=15&output=embed"
+              title="Mapa — Kvark Med, Industrijska 16A, Kragujevac"
+              src={contactInfo.address.embedHref}
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
               className="h-96 w-full border-0 sm:h-[28rem]"
             />

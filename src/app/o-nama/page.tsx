@@ -20,6 +20,7 @@ import { PartnersMarquee } from "@/components/sections/partners-marquee";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { ContactSection } from "@/components/sections/contact-section";
+import { LocationSection } from "@/components/sections/location-section";
 
 export const metadata: Metadata = {
   title: "O nama",
@@ -199,6 +200,8 @@ export default function ONamaPage() {
       <FaqSection />
 
       <ContactSection />
+
+      <LocationSection />
     </main>
   );
 }

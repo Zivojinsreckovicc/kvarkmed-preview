@@ -104,7 +104,7 @@ export const pcrSubsections: PcrSubsection[] = [
         name: "HPV-Q Comprehensive Real Time PCR Kit",
         description:
           "Napredni panel za detekciju ukupno 28 HPV genotipova (14 visokorizičnih i 14 nisko/srednjerizičnih tipova). Namenjen je sveobuhvatnom HPV skriningu, genotipizaciji i proceni rizika kod pacijenata.",
-        href: "https://genes2me.com/ivd-real-time-pcr/reproductive-disease-solutions/hpv-real-time-pcr-kit",
+        href: "https://www.genes2me.com/ivd-real-time-pcr/reproductive-disease-solutions/HPV-Q_Comprehensive_RealTime_PCRKit",
       },
       {
         name: "HPV-Q+ Comprehensive Real Time PCR Kit",
@@ -121,6 +121,7 @@ export const pcrSubsections: PcrSubsection[] = [
         name: "STI-Q Comprehensive Real Time PCR Kit / 14 patogena",
         description:
           "Multiplex panel za istovremenu detekciju najčešćih seksualno prenosivih infekcija iz jednog uzorka, omogućavajući brzu i preciznu laboratorijsku dijagnostiku.",
+        href: "https://www.genes2me.com/ivd-real-time-pcr/reproductive-disease-solutions/STI-Q_Comprehensive_RealTime_PCRKit",
       },
       {
         name: "STI7-Q Real Time PCR Kit",
@@ -147,6 +148,7 @@ export const pcrSubsections: PcrSubsection[] = [
         name: "RCP-Q Comprehensive Real Time PCR Kit / 19 targeta",
         description:
           "Sveobuhvatan panel za respiratorne bolesti — detekcija i identifikacija širokog spektra respiratornih patogena (virusa i bakterija) u okviru jednog testa, primenom jednokoračne real-time RT-PCR metode. Ovakav pristup pojednostavljuje dijagnostički proces i omogućava pravovremenu i preciznu identifikaciju uzročnika.",
+        href: "https://www.genes2me.com/ivd-real-time-pcr/respiratory-disease-solution/rcp-q-comprehensive-realtime-pcr-kit",
       },
     ],
   },
@@ -740,6 +742,33 @@ export const analyzers: Analyzer[] = [
       { key: "Primena", value: "Bolnice i laboratorije" },
     ],
   },
+  {
+    slug: "eaglenos-analizator-krvnih-gasova",
+    name: "Eaglenos Analizator Krvnih Gasova",
+    description:
+      "Eaglenos Analizator Krvnih Gasova predstavlja savremeno point-of-care rešenje za brzu analizu gasova u krvi, elektrolita i metaboličkih parametara direktno pored pacijenta. Zahvaljujući mikrofluidičkoj elektrohemijskoj tehnologiji i potpuno integrisanom sistemu sa jednokratnim kertridžima, omogućava laboratorijsku preciznost uz minimalno održavanje i izuzetno brzo dobijanje rezultata. Njegov kompaktan dizajn, intuitivan touchscreen interfejs i mogućnost povezivanja sa LIS/HIS sistemima čine ga idealnim izborom za bolnice, intenzivnu negu, urgentne centre i moderne laboratorije.",
+    image: "/imgs/analizatori/eaglenos-blood-gas-analyzer.webp",
+    imageClassName: "object-contain p-6",
+    catalogHref: "/analizatori-pdfs/blood-gas.pdf",
+    manufacturerHref: "https://www.eaglenos.com/en/en102-blood-gas-analyzer-series/",
+    specs: [
+      { key: "Tehnologija", value: "Mikrofluidička elektrohemijska tehnologija" },
+      { key: "Parametri", value: "Do 37 parametara (gasovi, elektroliti i metaboliti)" },
+      {
+        key: "Mereni parametri",
+        value: "pH, pCO₂, pO₂, Na⁺, K⁺, Cl⁻, iCa²⁺, Glukoza, Laktat, HCT",
+      },
+      { key: "Tip uzorka", value: "Arterijska i venska puna krv" },
+      { key: "Zapremina uzorka", value: "150 μL" },
+      { key: "Vreme do rezultata", value: "< 45 sekundi" },
+      { key: "Ekran", value: "8.9” Color Touch Screen" },
+      { key: "Memorija", value: "100.000 rezultata + 10.000 QC rezultata" },
+      { key: "Povezivanje", value: "LIS/HIS integracija" },
+      { key: "Dodatne funkcije", value: "Ugrađen barkod čitač i termalni printer" },
+      { key: "Održavanje", value: "Maintenance-Free sistem" },
+      { key: "Prenosivost", value: "Ugrađena baterija za mobilni rad" },
+    ],
+  },
 ];
 
 /* ========================================================================== */
@@ -757,7 +786,7 @@ export type PharmaCategory = {
   slug: string;
   title: string;
   description?: string;
-  items: string[];
+  items: (string | { name: string; href: string })[];
   /** Highlighted products with their own description (and optional link). */
   products?: PharmaProduct[];
   /** Manufacturer website for this category. */
@@ -772,15 +801,14 @@ export const pharmaCategories: PharmaCategory[] = [
     title: "Dijetetski suplementi",
     description: "Asortiman dijetetskih suplemenata uskoro u ponudi.",
     items: [],
-    manufacturerHref:
-      "https://www.themyricals.de/en?srsltid=AfmBOoo6fsAWVmdXRmA8xctLBlXa2UAUOuINwe9ZhaVWA9PNuaEE11j-",
+    manufacturerHref: "https://www.themyricals.de/en/pages/about",
     upcoming: true,
   },
   {
     slug: "flasteri",
     title: "Medicinski flasteri",
     items: [],
-    manufacturerHref: "https://fittherapy.biz/en/",
+    manufacturerHref: "https://fittherapy.biz/en/product/universal-fit-therapy-patch/",
     products: [
       {
         name: "FIT Therapy flasteri sa FIR tehnologijom",
@@ -794,7 +822,12 @@ export const pharmaCategories: PharmaCategory[] = [
     title: "Kućni testovi",
     description:
       "Jednostavni testovi za kućnu upotrebu, namenjeni brzoj i diskretnoj proveri u udobnosti doma.",
-    items: ["hCG testovi za trudnoću"],
+    items: [
+      {
+        name: "hCG testovi za trudnoću",
+        href: "https://www.alltests.com.cn/Home/ProductInfo/970",
+      },
+    ],
     manufacturerHref: "https://www.alltests.com.cn/",
     products: [
       {

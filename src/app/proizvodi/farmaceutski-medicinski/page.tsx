@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Section } from "@/components/ui";
 import { ProductHero } from "@/components/products/product-hero";
 import { Reveal } from "@/components/motion/reveal";
@@ -65,6 +66,44 @@ export default function FarmaceutskiMedicinskiPage() {
         title="Farmaceutski i medicinski proizvodi"
         description="Dijetetski suplementi, medicinski flasteri i trake za bolove i kućni testovi — namenjeni apotekama, zdravstvenim ustanovama i krajnjim korisnicima."
         crumbs={crumbs}
+        aside={
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-white/[0.08] p-8 shadow-2xl shadow-black/15 backdrop-blur-md">
+            <div
+              aria-hidden
+              className="absolute -right-12 -top-12 h-36 w-36 rounded-full border-[28px] border-white/[0.06]"
+            />
+            <div className="relative flex min-h-72 flex-col justify-between gap-10">
+              <div className="flex items-center justify-center">
+                <Image
+                  src="/imgs/logowhite.webp"
+                  alt="Kvark Med"
+                  width={260}
+                  height={90}
+                  className="h-auto w-52 object-contain"
+                />
+              </div>
+
+              <div>
+                <p className="mb-4 font-body text-xs font-semibold uppercase tracking-[0.18em] text-white/55">
+                  Ponuda za zdravlje i svakodnevnu negu
+                </p>
+                <ul className="grid gap-2.5">
+                  {["Dijetetski suplementi", "Medicinski flasteri", "Kućni testovi"].map(
+                    (item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.07] px-4 py-3 font-body text-sm font-medium text-white/90"
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-accent-300" />
+                        {item}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+            </div>
+          </div>
+        }
       />
 
       <Section spacing="lg" aria-label="Kategorije proizvoda">
@@ -105,9 +144,24 @@ export default function FarmaceutskiMedicinskiPage() {
                 ) : category.items.length ? (
                   <ul className="mt-1 flex flex-col gap-2.5 border-t border-border pt-5">
                     {category.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2.5 font-body text-sm text-ink-soft">
+                      <li
+                        key={typeof item === "string" ? item : item.name}
+                        className="flex items-center gap-2.5 font-body text-sm text-ink-soft"
+                      >
                         <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-300 transition-colors group-hover:bg-accent-600" />
-                        {item}
+                        {typeof item === "string" ? (
+                          item
+                        ) : (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 font-medium text-accent-700 underline decoration-accent-300 underline-offset-4 transition-colors hover:text-accent-900"
+                          >
+                            {item.name}
+                            <ExternalArrow />
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>

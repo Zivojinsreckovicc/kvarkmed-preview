@@ -95,16 +95,18 @@ export function AnalyzerCard({ analyzer }: { analyzer: Analyzer }) {
           >
             PDF katalog
           </Button>
-          <Button
-            href={analyzer.manufacturerHref ?? "#"}
-            variant="ghost"
-            size="sm"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Poseti sajt proizvođača
-            <ExternalIcon />
-          </Button>
+          {analyzer.manufacturerHref && (
+            <Button
+              href={analyzer.manufacturerHref}
+              variant="ghost"
+              size="sm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Poseti sajt proizvođača
+              <ExternalIcon />
+            </Button>
+          )}
         </div>
       </div>
 

@@ -28,6 +28,14 @@ function PinIcon() {
     </svg>
   );
 }
+function ClockIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-4 w-4 shrink-0 text-accent-400">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 const legalLinks = [
   { label: "Politika privatnosti", href: "/politika-privatnosti" },
@@ -103,6 +111,10 @@ export function Footer() {
                 </span>
                 {contactInfo.address.label}
               </a>
+              <span className="inline-flex items-center gap-3 font-body text-sm text-white/70">
+                <ClockIcon />
+                Radno vreme: {contactInfo.workingHours}
+              </span>
             </address>
           </div>
 
