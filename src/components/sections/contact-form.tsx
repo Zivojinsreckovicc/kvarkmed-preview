@@ -2,10 +2,14 @@
 
 import { useId, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { contactTopics } from "@/lib/site";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const WEB3FORMS_ACCESS_KEY = "04aa5bfb-1df4-41a7-8a14-68cd83874ca0";
+const THANK_YOU_PATH = "/hvala";
+const THANK_YOU_URL = "https://kvarkmed.rs/hvala";
 
 const fieldBase =
   "w-full rounded-button border bg-background px-4 font-body text-sm text-ink placeholder:text-faint transition-colors focus:outline-none focus:ring-2 focus:ring-accent-600/30 focus:border-accent-600";
@@ -23,10 +27,12 @@ function Label({ htmlFor, children, required }: { htmlFor: string; children: Rea
 
 export function ContactForm() {
   const uid = useId();
+  const router = useRouter();
   const [errors, setErrors] = useState<Errors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
@@ -48,28 +54,38 @@ export function ContactForm() {
       return;
     }
 
-    // TODO: send to a real endpoint / email service.
-    setSubmitted(true);
-  }
-
-  if (submitted) {
-    return (
-      <div className="flex h-full min-h-80 flex-col items-center justify-center gap-4 text-center">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-50 text-accent-600">
-          <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" aria-hidden>
-            <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </span>
-        <h3 className="font-heading text-xl font-semibold text-ink">Hvala na poruci</h3>
-        <p className="max-w-sm font-body text-sm leading-relaxed text-muted">
-          Vaš upit je zabeležen. Naš tim će vam se javiti u najkraćem mogućem roku.
-        </p>
-      </div>
-    );
+    setSubmitError("");
+    setSubmitting(true);
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      const result = await response.json();
+      if (result.success) {
+        router.push(THANK_YOU_PATH);
+        return;
+      }
+      setSubmitError("Slanje poruke nije uspelo. Pokušajte ponovo ili nas kontaktirajte telefonom.");
+    } catch {
+      setSubmitError("Slanje poruke nije uspelo. Proverite internet konekciju i pokušajte ponovo.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+    <form
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      onSubmit={handleSubmit}
+      noValidate
+      className="flex flex-col gap-5"
+    >
+      <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+      <input type="hidden" name="subject" value="Nova poruka sa kontakt forme — Kvark Med" />
+      <input type="hidden" name="redirect" value={THANK_YOU_URL} />
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <Label htmlFor={`${uid}-name`} required>
@@ -196,11 +212,18 @@ export function ContactForm() {
         ) : null}
       </div>
 
+      {submitError ? (
+        <p role="alert" className="font-body text-sm text-red-500">
+          {submitError}
+        </p>
+      ) : null}
+
       <button
         type="submit"
-        className="inline-flex h-12 items-center justify-center rounded-button bg-accent-600 px-8 font-body text-sm font-medium text-white transition-colors hover:bg-accent-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600/40 focus-visible:ring-offset-2"
+        disabled={submitting}
+        className="inline-flex h-12 items-center justify-center rounded-button bg-accent-600 px-8 font-body text-sm font-medium text-white transition-colors hover:bg-accent-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600/40 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Pošaljite upit
+        {submitting ? "Slanje…" : "Pošaljite upit"}
       </button>
     </form>
   );
