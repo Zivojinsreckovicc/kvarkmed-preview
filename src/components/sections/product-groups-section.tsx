@@ -125,10 +125,6 @@ export function ProductGroupsSection({ id = "proizvodi" }: { id?: string }) {
               <h2 className="font-heading text-h2 font-semibold text-white">
                 Kompletan asortiman na jednom mestu
               </h2>
-              <p className="font-body text-base leading-relaxed text-white/70">
-                Jasna hijerarhija kategorija olakšava pronalaženje pravih rešenja. Izaberite
-                grupu da vidite detalje.
-              </p>
             </Reveal>
 
             {/* Interactive split */}
