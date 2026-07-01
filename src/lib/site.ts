@@ -9,7 +9,7 @@ export const contactInfo = {
   landlines: [
     { label: "034/352-702", href: "tel:+38134352702" },
   ],
-  email: { label: "kvarkmed@kvark.rs", href: "mailto:kvarkmed@kvark.rs" },
+  email: { label: "info@kvarkmed.rs", href: "mailto:info@kvarkmed.rs" },
   address: {
     label: "Industrijska 16A, Kragujevac",
     href: "https://www.google.com/maps/search/?api=1&query=Industrijska%2016A%2C%2034000%20Kragujevac%2C%20Serbia",
